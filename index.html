@@ -421,18 +421,5 @@
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
-    <script>
-        if (window.netlifyIdentity) {
-            // Redirect after login
-            window.netlifyIdentity.on("login", () => {
-                document.location.href = "/admin/";
-            });
-
-            // Redirect after signup/confirmation
-            window.netlifyIdentity.on("signup", () => {
-                document.location.href = "/admin/";
-            });
-        }
-    </script>
 </body>
 </html>
