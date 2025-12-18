@@ -1105,6 +1105,8 @@ ul {
 
     .hero-title {
         font-size: 2.5rem;
+        color: transparent;
+        -webkit-text-stroke: 2px rgba(255, 255, 255, 0.9);
     }
 
     .hero-subtitle {
