@@ -77,7 +77,7 @@ const vehiclesData = [
         fuel: "Essence",
         transmission: "Automatique",
         power: "130 ch",
-        types: ["occasion"], // Seulement occasion (Essence avec km)
+        types: ["moins de 3 ans"], // Seulement occasion (Essence avec km)
         destination: "algerie",
         image: "images/PEUGEOT-occasion-2008-009668-1-hp.jpg",
         description: "SUV urbain récent avec garantie constructeur restante",

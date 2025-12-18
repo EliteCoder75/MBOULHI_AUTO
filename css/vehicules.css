@@ -5,14 +5,14 @@
 /* ===== PAGE HEADER ===== */
 .page-header {
     position: relative;
-    padding: 100px 0 60px;
+    padding: 180px 0 60px;
     background-image: url('../images/photo_de_couverture.png');
     background-size: cover;
     background-position: left;
     background-attachment: fixed;
     text-align: center;
     color: var(--text-white);
-    margin-top: 92px;
+    margin-top: 0;
     overflow: hidden;
 }
 
@@ -250,6 +250,8 @@
 @media (max-width: 768px) {
     .page-header {
         padding: 120px 0 60px;
+        margin-top: 0;
+        background-attachment: scroll;
     }
 
     .page-title {

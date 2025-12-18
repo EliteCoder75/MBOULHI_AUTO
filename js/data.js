@@ -96,6 +96,7 @@ const vehiclesData = [
         "transmission": "Automatique",
         "power": "130 ch",
         "types": [
+            "recent",
             "occasion"
         ],
         "destination": "algerie",
@@ -497,6 +498,126 @@ const vehiclesData = [
             "Fiabilité Toyota",
             "Spacieux",
             "Polyvalent"
+        ]
+    },
+    {
+        "id": 22,
+        "brand": "RENAULT",
+        "model": "Clio",
+        "year": 2024,
+        "price": 18900,
+        "mileage": 12000,
+        "fuel": "Essence",
+        "transmission": "Automatique",
+        "power": "100 ch",
+        "types": [
+            "recent",
+            "occasion"
+        ],
+        "destination": "algerie",
+        "image": "images/PEUGEOT-occasion-208-800430-1.jpg",
+        "description": "Citadine moderne et économique de 2024",
+        "features": [
+            "Écran tactile 9''",
+            "Caméra de recul",
+            "Régulateur adaptatif",
+            "Bluetooth"
+        ]
+    },
+    {
+        "id": 23,
+        "brand": "VOLKSWAGEN",
+        "model": "Golf",
+        "year": 2023,
+        "price": 23500,
+        "mileage": 18000,
+        "fuel": "Essence",
+        "transmission": "Automatique",
+        "power": "150 ch",
+        "types": [
+            "recent",
+            "occasion"
+        ],
+        "destination": "export",
+        "image": "images/VOLKSWAGEN-occasion-T-cross-102127-1-hp.jpg",
+        "description": "Compacte premium récente, excellent état",
+        "features": [
+            "Digital Cockpit",
+            "LED Matrix",
+            "ACC",
+            "Keyless"
+        ]
+    },
+    {
+        "id": 24,
+        "brand": "PEUGEOT",
+        "model": "3008",
+        "year": 2023,
+        "price": 27900,
+        "mileage": 22000,
+        "fuel": "Hybride",
+        "transmission": "Automatique",
+        "power": "225 ch",
+        "types": [
+            "recent",
+            "occasion"
+        ],
+        "destination": "algerie",
+        "image": "images/PEUGEOT-occasion-5008-102125-1-hp.jpg",
+        "description": "SUV hybride rechargeable, très économique",
+        "features": [
+            "Plug-in Hybrid",
+            "i-Cockpit",
+            "Massage siège",
+            "Toit panoramique"
+        ]
+    },
+    {
+        "id": 25,
+        "brand": "NISSAN",
+        "model": "Leaf",
+        "year": 2024,
+        "price": 26500,
+        "mileage": 8000,
+        "fuel": "Électrique",
+        "transmission": "Automatique",
+        "power": "150 ch",
+        "types": [
+            "recent",
+            "occasion"
+        ],
+        "destination": "export",
+        "image": "images/NISSAN-occasion-Qashqai-011619-1-hp.jpg",
+        "description": "100% électrique, autonomie 385 km",
+        "features": [
+            "Charge rapide",
+            "ProPilot",
+            "e-Pedal",
+            "Garantie batterie"
+        ]
+    },
+    {
+        "id": 26,
+        "brand": "RENAULT",
+        "model": "Captur",
+        "year": 2023,
+        "price": 19900,
+        "mileage": 16000,
+        "fuel": "Essence",
+        "transmission": "Manuelle",
+        "power": "90 ch",
+        "types": [
+            "recent",
+            "occasion"
+        ],
+        "destination": "algerie",
+        "image": "images/PEUGEOT-occasion-2008-009668-1-hp.jpg",
+        "description": "SUV compact récent, idéal pour l'Algérie",
+        "features": [
+            "Écran tactile",
+            "Clim auto",
+            "Caméra recul",
+            "Jantes alliage"
         ]
     }
 ];
