@@ -1,0 +1,12 @@
+{
+  "name": "mboulhi-auto",
+  "version": "1.0.0",
+  "description": "Site web MBOULHI AUTO avec Netlify CMS",
+  "scripts": {
+    "sync": "node scripts/sync-vehicles.js",
+    "build": "node scripts/sync-vehicles.js"
+  },
+  "dependencies": {
+    "gray-matter": "^4.0.3"
+  }
+}

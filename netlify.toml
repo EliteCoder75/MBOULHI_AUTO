@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = "echo 'No build required - static site'"
+  command = "npm install && npm run build"
 
 # Security headers for all pages
 [[headers]]

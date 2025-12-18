@@ -1,4 +1,56 @@
+#!/usr/bin/env node
+
 /**
+ * Script pour synchroniser les véhicules du CMS vers data.js
+ * Convertit les fichiers Markdown de _vehicules/ en tableau JavaScript
+ */
+
+const fs = require('fs');
+const path = require('path');
+const matter = require('gray-matter');
+
+const VEHICLES_DIR = path.join(__dirname, '..', '_vehicules');
+const OUTPUT_FILE = path.join(__dirname, '..', 'js', 'data.js');
+
+// Lire tous les fichiers Markdown dans _vehicules/
+function loadVehiclesFromMarkdown() {
+    if (!fs.existsSync(VEHICLES_DIR)) {
+        console.log('⚠️  Le dossier _vehicules/ n\'existe pas encore.');
+        return [];
+    }
+
+    const files = fs.readdirSync(VEHICLES_DIR).filter(file => file.endsWith('.md'));
+
+    const vehicles = files.map(file => {
+        const filePath = path.join(VEHICLES_DIR, file);
+        const fileContent = fs.readFileSync(filePath, 'utf8');
+        const { data } = matter(fileContent);
+
+        return {
+            id: data.id,
+            brand: data.brand,
+            model: data.model,
+            year: data.year,
+            price: data.price,
+            mileage: data.mileage,
+            fuel: data.fuel,
+            transmission: data.transmission,
+            power: data.power,
+            types: data.types,
+            destination: data.destination,
+            image: data.image,
+            description: data.description,
+            features: data.features
+        };
+    });
+
+    // Trier par ID
+    return vehicles.sort((a, b) => a.id - b.id);
+}
+
+// Générer le fichier data.js
+function generateDataJS(vehicles) {
+    const template = `/**
  * MBOULHI AUTO - Données des véhicules
  * Généré automatiquement depuis les fichiers CMS
  *
@@ -15,33 +67,7 @@
  * ⚠️ RÈGLE IMPORTANTE: Les véhicules DIESEL avec kilométrage ne peuvent JAMAIS être "recent"
  */
 
-const vehiclesData = [
-    {
-        "id": 576918916,
-        "brand": "Renault",
-        "model": "21",
-        "year": 2015,
-        "price": 5000,
-        "mileage": 160000,
-        "fuel": "Diesel",
-        "transmission": "Manuelle",
-        "power": "71 ch",
-        "types": [
-            "occasion"
-        ],
-        "destination": "europe",
-        "image": "images/20230623_144748-scaled.jpg",
-        "description": "voiture de collection élegante et spacieuse",
-        "features": [
-            "climatisation",
-            "vitres électiques",
-            "direction assisté",
-            "feux anti brouillards",
-            "gantes alliages",
-            "siége cuires "
-        ]
-    }
-];
+const vehiclesData = ${JSON.stringify(vehicles, null, 4)};
 
 // Fonction pour obtenir tous les véhicules
 function getAllVehicles() {
@@ -127,4 +153,20 @@ function getDestinationLabel(destination) {
         europe: 'Europe'
     };
     return labels[destination] || destination;
+}
+`;
+
+    fs.writeFileSync(OUTPUT_FILE, template, 'utf8');
+    console.log(`✅ Fichier data.js mis à jour avec ${vehicles.length} véhicule(s)`);
+}
+
+// Exécuter le script
+try {
+    console.log('🔄 Synchronisation des véhicules...');
+    const vehicles = loadVehiclesFromMarkdown();
+    generateDataJS(vehicles);
+    console.log('✨ Synchronisation terminée!');
+} catch (error) {
+    console.error('❌ Erreur:', error.message);
+    process.exit(1);
 }
