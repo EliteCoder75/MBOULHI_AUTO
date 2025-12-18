@@ -76,21 +76,26 @@ function loadVehiclesFromMarkdown() {
 
 // Fusionner les véhicules de base avec ceux du CMS
 function mergeVehicles(baseVehicles, cmsVehicles) {
+    // Les véhicules de base sont toujours conservés
     const merged = [...baseVehicles];
     const baseIds = new Set(baseVehicles.map(v => v.id));
 
-    // Ajouter les véhicules du CMS qui n'existent pas encore
+    // Ajouter ou mettre à jour les véhicules du CMS
     for (const cmsVehicle of cmsVehicles) {
         if (!baseIds.has(cmsVehicle.id)) {
+            // Nouveau véhicule du CMS : ajouter
             merged.push(cmsVehicle);
         } else {
-            // Remplacer le véhicule de base par celui du CMS (mise à jour)
+            // Véhicule existe dans la base : le remplacer par la version CMS (mise à jour)
             const index = merged.findIndex(v => v.id === cmsVehicle.id);
             if (index !== -1) {
                 merged[index] = cmsVehicle;
             }
         }
     }
+
+    // Note: Les véhicules qui ne sont ni dans base ni dans CMS sont automatiquement exclus
+    // Car on part de baseVehicles et on ajoute seulement les cmsVehicles actuels
 
     // Trier par ID
     return merged.sort((a, b) => a.id - b.id);
