@@ -2,7 +2,7 @@
 
 /**
  * Script pour synchroniser les véhicules du CMS vers data.js
- * Convertit les fichiers Markdown de _vehicules/ en tableau JavaScript
+ * Fusionne les véhicules de base avec ceux ajoutés via le CMS
  */
 
 const fs = require('fs');
@@ -10,16 +10,42 @@ const path = require('path');
 const matter = require('gray-matter');
 
 const VEHICLES_DIR = path.join(__dirname, '..', '_vehicules');
+const BASE_VEHICLES_FILE = path.join(__dirname, '..', 'js', 'vehicles-base.js');
 const OUTPUT_FILE = path.join(__dirname, '..', 'js', 'data.js');
+
+// Charger les véhicules de base depuis vehicles-base.js
+function loadBaseVehicles() {
+    if (!fs.existsSync(BASE_VEHICLES_FILE)) {
+        console.log('⚠️  Fichier vehicles-base.js introuvable. Utilisation d\'un tableau vide.');
+        return [];
+    }
+
+    try {
+        const baseContent = fs.readFileSync(BASE_VEHICLES_FILE, 'utf8');
+        // Extraire le tableau vehiclesData du fichier
+        const match = baseContent.match(/const vehiclesData = (\[[\s\S]*?\]);/);
+        if (match && match[1]) {
+            return eval(match[1]); // Parse le tableau JavaScript
+        }
+    } catch (error) {
+        console.error('Erreur lors du chargement des véhicules de base:', error.message);
+    }
+    return [];
+}
 
 // Lire tous les fichiers Markdown dans _vehicules/
 function loadVehiclesFromMarkdown() {
     if (!fs.existsSync(VEHICLES_DIR)) {
-        console.log('⚠️  Le dossier _vehicules/ n\'existe pas encore.');
+        console.log('ℹ️  Le dossier _vehicules/ n\'existe pas encore.');
         return [];
     }
 
     const files = fs.readdirSync(VEHICLES_DIR).filter(file => file.endsWith('.md'));
+
+    if (files.length === 0) {
+        console.log('ℹ️  Aucun véhicule dans _vehicules/');
+        return [];
+    }
 
     const vehicles = files.map(file => {
         const filePath = path.join(VEHICLES_DIR, file);
@@ -36,16 +62,38 @@ function loadVehiclesFromMarkdown() {
             fuel: data.fuel,
             transmission: data.transmission,
             power: data.power,
-            types: data.types,
+            types: data.types || ['occasion'], // Par défaut occasion
             destination: data.destination,
             image: data.image,
             description: data.description,
-            features: data.features
+            features: data.features || []
         };
     });
 
+    console.log(`✅ Chargé ${vehicles.length} véhicule(s) depuis le CMS`);
+    return vehicles;
+}
+
+// Fusionner les véhicules de base avec ceux du CMS
+function mergeVehicles(baseVehicles, cmsVehicles) {
+    const merged = [...baseVehicles];
+    const baseIds = new Set(baseVehicles.map(v => v.id));
+
+    // Ajouter les véhicules du CMS qui n'existent pas encore
+    for (const cmsVehicle of cmsVehicles) {
+        if (!baseIds.has(cmsVehicle.id)) {
+            merged.push(cmsVehicle);
+        } else {
+            // Remplacer le véhicule de base par celui du CMS (mise à jour)
+            const index = merged.findIndex(v => v.id === cmsVehicle.id);
+            if (index !== -1) {
+                merged[index] = cmsVehicle;
+            }
+        }
+    }
+
     // Trier par ID
-    return vehicles.sort((a, b) => a.id - b.id);
+    return merged.sort((a, b) => a.id - b.id);
 }
 
 // Générer le fichier data.js
@@ -163,10 +211,19 @@ function getDestinationLabel(destination) {
 // Exécuter le script
 try {
     console.log('🔄 Synchronisation des véhicules...');
-    const vehicles = loadVehiclesFromMarkdown();
-    generateDataJS(vehicles);
+
+    const baseVehicles = loadBaseVehicles();
+    console.log(`📦 Chargé ${baseVehicles.length} véhicule(s) de base`);
+
+    const cmsVehicles = loadVehiclesFromMarkdown();
+
+    const allVehicles = mergeVehicles(baseVehicles, cmsVehicles);
+    console.log(`🔀 Fusion: ${allVehicles.length} véhicule(s) au total`);
+
+    generateDataJS(allVehicles);
     console.log('✨ Synchronisation terminée!');
 } catch (error) {
     console.error('❌ Erreur:', error.message);
+    console.error(error.stack);
     process.exit(1);
 }
