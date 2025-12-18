@@ -1082,6 +1082,7 @@ ul {
         transform: translateX(-100%);
         transition: var(--transition-normal);
         box-shadow: var(--shadow-lg);
+        z-index: 999; /* Menu au-dessus de tout sauf header */
     }
 
     .nav-menu.active {
@@ -1094,10 +1095,21 @@ ul {
 
     .hero {
         min-height: 600px;
+        background-attachment: scroll; /* Désactiver parallax sur mobile pour afficher l'image */
+    }
+
+    .hero-content {
+        margin-top: 100px; /* Plus d'espace pour ne pas être caché par le header */
+        padding: var(--spacing-sm);
     }
 
     .hero-title {
         font-size: 2.5rem;
+    }
+
+    .hero-subtitle {
+        display: block; /* S'assurer qu'il est visible */
+        margin-bottom: 1rem;
     }
 
     .hero-description {
@@ -1115,6 +1127,19 @@ ul {
 
     .stat-item {
         width: 100%;
+        padding: 1rem 1.5rem; /* Réduire padding */
+    }
+
+    .stat-number {
+        font-size: 1.5rem; /* Réduire taille du nombre */
+    }
+
+    .stat-label {
+        font-size: 0.8rem; /* Réduire taille du label */
+    }
+
+    .stat-item i {
+        font-size: 2rem; /* Réduire taille icône */
     }
 
     .section {
@@ -1141,7 +1166,7 @@ ul {
 
 @media (max-width: 480px) {
     .logo img {
-        height: 65px;
+        height: 75px; /* Logo plus grand sur mobile */
     }
 
     .hero-title {
