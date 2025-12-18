@@ -165,6 +165,38 @@ features:
 - Activez l'authentification à deux facteurs si disponible
 - Gardez une liste des utilisateurs autorisés à jour
 
+## Dépannage
+
+### Problème: "Page not found" après déploiement
+
+**Cause**: Une règle de redirection dans `netlify.toml` avec des conditions basées sur les rôles (`conditions = {Role = ["admin"]}`) peut bloquer l'accès aux pages pour les visiteurs non authentifiés.
+
+**Solution**: Pour un site HTML statique, supprimez les redirects avec conditions de rôle dans `netlify.toml`. Le fichier doit contenir uniquement:
+
+```toml
+[build]
+  publish = "."
+  command = "echo 'No build required - static site'"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+```
+
+**Note**: Les redirects avec conditions de rôle sont uniquement nécessaires pour les Single Page Applications (SPA), pas pour les sites multi-pages avec fichiers HTML individuels.
+
+### Problème: Le CMS ne se charge pas
+
+**Vérifications**:
+1. Netlify Identity est activé dans les paramètres du site
+2. Git Gateway est activé dans Identity > Services
+3. Le fichier `admin/config.yml` a la bonne branche configurée (`main` ou `master`)
+4. L'utilisateur a été invité et a accepté l'invitation
+
 ## Support
 
 Pour toute question sur Netlify CMS :
