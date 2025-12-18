@@ -1,0 +1,86 @@
+backend:
+  name: git-gateway
+  branch: master # Changez en 'master' si votre branche principale s'appelle master
+
+media_folder: "images" # Dossier où les images seront stockées
+public_folder: "images" # Chemin public pour les images
+
+locale: 'fr' # Interface en français
+
+collections:
+  # Collection pour les véhicules
+  - name: "vehicules"
+    label: "Véhicules"
+    label_singular: "Véhicule"
+    folder: "_vehicules"
+    create: true
+    slug: "{{year}}-{{slug}}"
+    fields:
+      - {label: "ID", name: "id", widget: "number", value_type: "int"}
+      - {label: "Marque", name: "brand", widget: "string"}
+      - {label: "Modèle", name: "model", widget: "string"}
+      - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2015, max: 2026}
+      - {label: "Prix (€)", name: "price", widget: "number", value_type: "int"}
+      - {label: "Kilométrage", name: "mileage", widget: "number", value_type: "int", default: 0}
+      - label: "Carburant"
+        name: "fuel"
+        widget: "select"
+        options:
+          - {label: "Essence", value: "Essence"}
+          - {label: "Diesel", value: "Diesel"}
+          - {label: "Électrique", value: "Électrique"}
+          - {label: "Hybride", value: "Hybride"}
+      - label: "Transmission"
+        name: "transmission"
+        widget: "select"
+        options:
+          - {label: "Manuelle", value: "Manuelle"}
+          - {label: "Automatique", value: "Automatique"}
+      - {label: "Puissance", name: "power", widget: "string", pattern: ['\d+ ch', "Format: XXX ch"]}
+      - label: "Types"
+        name: "types"
+        widget: "select"
+        multiple: true
+        options:
+          - {label: "Neuf", value: "neuf"}
+          - {label: "Moins de 3 ans", value: "recent"}
+          - {label: "Occasion", value: "occasion"}
+        hint: "Neuf: 2025-2026 avec 0km | Moins de 3 ans: 2023-2025 avec km > 0 (Essence/Électrique/Hybride uniquement, PAS Diesel) | Occasion: tous les autres"
+      - label: "Destination"
+        name: "destination"
+        widget: "select"
+        options:
+          - {label: "Export", value: "export"}
+          - {label: "Algérie", value: "algerie"}
+          - {label: "Europe", value: "europe"}
+      - {label: "Image", name: "image", widget: "image"}
+      - {label: "Description", name: "description", widget: "text"}
+      - label: "Caractéristiques"
+        name: "features"
+        widget: "list"
+        field: {label: "Caractéristique", name: "feature", widget: "string"}
+        min: 3
+        max: 6
+
+  # Collection pour les paramètres du site
+  - name: "settings"
+    label: "Paramètres"
+    files:
+      - label: "Informations de contact"
+        name: "contact"
+        file: "_settings/contact.json"
+        fields:
+          - {label: "Téléphone", name: "phone", widget: "string", pattern: ['^\+\d{10,15}$', "Format: +33123456789"]}
+          - {label: "WhatsApp", name: "whatsapp", widget: "string", pattern: ['^\+\d{10,15}$', "Format: +33123456789"]}
+          - {label: "Email", name: "email", widget: "string", pattern: ['^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$', "Email invalide"]}
+          - {label: "Adresse", name: "address", widget: "string"}
+          - {label: "Horaires", name: "hours", widget: "string", default: "Lun-Sam: 9h-19h"}
+
+      - label: "Réseaux sociaux"
+        name: "social"
+        file: "_settings/social.json"
+        fields:
+          - {label: "TikTok URL", name: "tiktok", widget: "string", required: false}
+          - {label: "Facebook URL", name: "facebook", widget: "string", required: false}
+          - {label: "YouTube URL", name: "youtube", widget: "string", required: false}
+          - {label: "Instagram URL", name: "instagram", widget: "string", required: false}

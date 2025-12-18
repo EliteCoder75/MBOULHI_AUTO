@@ -3,14 +3,16 @@
  * Base de données fictive pour démonstration
  *
  * SYSTÈME DE TAGS:
- * - "neuf" : Véhicule neuf 2025-2026 avec 0 km
- * - "recent" : Véhicule de moins de 3 ans (2023-2025)
- * - "occasion" : Véhicule d'occasion (kilométrage > 0)
+ * - "neuf" : Véhicule neuf 2025-2026 avec 0 km (tous carburants)
+ * - "recent" : Véhicule de moins de 3 ans (2023-2025, km > 0, Essence/Électrique/Hybride uniquement)
+ * - "occasion" : Véhicule d'occasion (kilométrage > 0, tous carburants)
  *
  * Une voiture peut avoir PLUSIEURS tags:
- * - Neuf : ["neuf"] uniquement (2025-2026, 0 km)
- * - Occasion - 3 ans : ["recent", "occasion"] (2023-2025, km > 0)
- * - Occasion + 3 ans : ["occasion"] uniquement (avant 2023)
+ * - Neuf : ["neuf"] uniquement (2025-2026, 0 km, tous carburants)
+ * - Moins de 3 ans : ["recent", "occasion"] (2023-2025, km > 0, Essence/Électrique/Hybride UNIQUEMENT)
+ * - Occasion : ["occasion"] uniquement (avant 2023 OU Diesel avec km > 0)
+ *
+ * ⚠️ RÈGLE IMPORTANTE: Les véhicules DIESEL avec kilométrage ne peuvent JAMAIS être "recent"
  */
 
 const vehiclesData = [
@@ -59,7 +61,7 @@ const vehiclesData = [
         fuel: "Diesel",
         transmission: "Automatique",
         power: "115 ch",
-        types: ["recent", "occasion"], // Récent ET occasion (2023)
+        types: ["occasion"], // Seulement occasion (Diesel avec km)
         destination: "algerie",
         image: "images/VOLKSWAGEN-occasion-T-cross-102127-1-hp.jpg",
         description: "SUV compact récent, conforme pour l'Algérie",
@@ -91,7 +93,7 @@ const vehiclesData = [
         fuel: "Diesel",
         transmission: "Manuelle",
         power: "115 ch",
-        types: ["recent", "occasion"], // Récent ET occasion (2023)
+        types: ["occasion"], // Seulement occasion (Diesel avec km)
         destination: "algerie",
         image: "images/NISSAN-occasion-Qashqai-011619-1-hp.jpg",
         description: "SUV familial fiable et spacieux",
@@ -107,7 +109,7 @@ const vehiclesData = [
         fuel: "Diesel",
         transmission: "Automatique",
         power: "130 ch",
-        types: ["recent", "occasion"], // Récent ET occasion (2023)
+        types: ["occasion"], // Seulement occasion (Diesel avec km)
         destination: "algerie",
         image: "images/PEUGEOT-occasion-5008-102125-1-hp.jpg",
         description: "SUV 7 places, idéal pour les familles",
