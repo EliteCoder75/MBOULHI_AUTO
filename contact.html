@@ -26,7 +26,8 @@
 
                     <ul class="nav-menu" id="navMenu">
                         <li><a href="index.html" class="nav-link">Accueil</a></li>
-                        <li><a href="vehicules.html" class="nav-link">Nos Véhicules</a></li>
+                        <li><a href="vehicules-neufs.html" class="nav-link">Véhicules Neufs</a></li>
+                        <li><a href="vehicules-occasion.html" class="nav-link">Véhicules d'Occasion</a></li>
                         <li><a href="services.html" class="nav-link">Services</a></li>
                         <li><a href="about.html" class="nav-link">À Propos</a></li>
                         <li><a href="contact.html" class="nav-link active">Contact</a></li>
@@ -214,12 +215,46 @@
         </div>
     </section>
 
-    <!-- Map Section (Placeholder) -->
-    <section class="map-section">
-        <div class="map-placeholder">
-            <i class="fas fa-map-marked-alt"></i>
-            <p>Carte de localisation</p>
-            <small>Paris, France - Sur rendez-vous uniquement</small>
+    <!-- Map Section -->
+    <section class="map-section-contact section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Adresse</h2>
+            </div>
+            <div class="map-container">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2788.3946280620135!2d4.990520076116287!3d45.66297757107791!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47f4c5001a3b8251%3A0x8899650a018dd9a0!2sMBOULHI%20AUTO!5e0!3m2!1sfr!2sfr!4v1768473017017!5m2!1sfr!2sfr"
+                    width="100%"
+                    height="450"
+                    style="border:0; border-radius: 15px;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <div class="map-info">
+                    <div class="map-info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Adresse</strong>
+                            <p>69 Chem. Neuf, 69780 Toussieu</p>
+                        </div>
+                    </div>
+                    <div class="map-info-item">
+                        <i class="fas fa-clock"></i>
+                        <div>
+                            <strong>Horaires</strong>
+                            <p>Lun-Sam: 9h-19h | Sur rendez-vous</p>
+                        </div>
+                    </div>
+                    <div class="map-info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <strong>Téléphone</strong>
+                            <p><a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -263,7 +298,8 @@
                     <h4>Liens Rapides</h4>
                     <ul class="footer-links">
                         <li><a href="index.html">Accueil</a></li>
-                        <li><a href="vehicules.html">Nos Véhicules</a></li>
+                        <li><a href="vehicules-neufs.html">Véhicules Neufs</a></li>
+                        <li><a href="vehicules-occasion.html">Véhicules d'Occasion</a></li>
                         <li><a href="services.html">Services</a></li>
                         <li><a href="about.html">À Propos</a></li>
                         <li><a href="contact.html">Contact</a></li>
@@ -271,11 +307,10 @@
                 </div>
 
                 <div class="footer-column">
-                    <h4>Nos Services</h4>
+                    <h4>Nos Véhicules</h4>
                     <ul class="footer-links">
-                        <li><a href="vehicules.html?type=neuf">Véhicules Neufs</a></li>
-                        <li><a href="vehicules.html?type=recent">Véhicules moins de 3 ans</a></li>
-                        <li><a href="vehicules.html?type=occasion">Véhicules d'Occasion</a></li>
+                        <li><a href="vehicules-neufs.html">Véhicules Neufs (Export)</a></li>
+                        <li><a href="vehicules-occasion.html">Véhicules d'Occasion</a></li>
                         <li><a href="services.html#export">Export International</a></li>
                         <li><a href="services.html#reprise">Reprise Véhicule</a></li>
                     </ul>
@@ -541,33 +576,8 @@
             font-size: 1.3rem;
         }
 
-        .map-section {
-            height: 400px;
+        .map-section-contact {
             background: var(--bg-gray);
-        }
-
-        .map-placeholder {
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-light);
-        }
-
-        .map-placeholder i {
-            font-size: 4rem;
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .map-placeholder p {
-            font-size: 1.2rem;
-            font-weight: 600;
-        }
-
-        .map-placeholder small {
-            margin-top: 0.5rem;
         }
 
         @media (max-width: 992px) {

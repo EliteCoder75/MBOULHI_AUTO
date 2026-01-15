@@ -8,7 +8,7 @@
     padding: 180px 0 60px;
     background-image: url('../images/photo_de_couverture.png');
     background-size: cover;
-    background-position: left;
+    background-position: top center;
     background-attachment: fixed;
     text-align: center;
     color: var(--text-white);
@@ -252,6 +252,7 @@
         padding: 120px 0 60px;
         margin-top: 0;
         background-attachment: scroll;
+        background-position: top center; /* Montrer le logo en haut sur mobile */
     }
 
     .page-title {

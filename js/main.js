@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initFeaturedVehicles();
     initVehiclesPage();
     initContactForm();
+    initReviewsCarousel();
 });
 
 // ===== NAVIGATION =====
@@ -378,3 +379,42 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
+
+// ===== REVIEWS CAROUSEL =====
+function initReviewsCarousel() {
+    const reviewsCarousel = document.getElementById('reviewsCarousel');
+
+    if (!reviewsCarousel) return;
+
+    // Enable smooth horizontal scrolling
+    reviewsCarousel.style.cursor = 'grab';
+
+    let isDown = false;
+    let startX;
+    let scrollLeft;
+
+    reviewsCarousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        reviewsCarousel.style.cursor = 'grabbing';
+        startX = e.pageX - reviewsCarousel.offsetLeft;
+        scrollLeft = reviewsCarousel.scrollLeft;
+    });
+
+    reviewsCarousel.addEventListener('mouseleave', () => {
+        isDown = false;
+        reviewsCarousel.style.cursor = 'grab';
+    });
+
+    reviewsCarousel.addEventListener('mouseup', () => {
+        isDown = false;
+        reviewsCarousel.style.cursor = 'grab';
+    });
+
+    reviewsCarousel.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - reviewsCarousel.offsetLeft;
+        const walk = (x - startX) * 2;
+        reviewsCarousel.scrollLeft = scrollLeft - walk;
+    });
+}
