@@ -291,15 +291,10 @@ function displayVehicles() {
 
 // ===== VOIR LES DÉTAILS D'UN VÉHICULE =====
 function viewVehicleDetails(vehicleId) {
-    // Pour l'instant, on redirige vers WhatsApp avec les infos du véhicule
-    const vehicle = getVehicleById(vehicleId);
-
-    if (!vehicle) return;
-
-    const message = `Bonjour, je suis intéressé(e) par le véhicule suivant :\n\n${vehicle.brand} ${vehicle.model}\nAnnée : ${vehicle.year}\nPrix : ${formatPrice(vehicle.price)}\nKilométrage : ${formatMileage(vehicle.mileage)}\n\nPouvez-vous me donner plus d'informations ?`;
-
-    const whatsappUrl = `https://wa.me/33123456789?text=${encodeURIComponent(message)}`;
-    window.open(whatsappUrl, '_blank');
+    console.log('Redirecting to detail page for vehicle ID:', vehicleId);
+    console.log('Current URL:', window.location.href);
+    // Redirect to detail page
+    window.location.href = `/vehicule-detail.html?id=${vehicleId}`;
 }
 
 // ===== FORMULAIRE DE CONTACT =====
