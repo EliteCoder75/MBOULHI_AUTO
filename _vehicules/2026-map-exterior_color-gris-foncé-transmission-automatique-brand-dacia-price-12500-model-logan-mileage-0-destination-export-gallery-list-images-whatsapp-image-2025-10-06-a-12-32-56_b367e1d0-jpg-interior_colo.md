@@ -15,6 +15,5 @@ types:
   - neuf
 destination: export
 image: images/whatsapp-image-2025-10-06-a-12.32.56_b367e1d0.jpg
-gallery:
-  - images/whatsapp-image-2025-10-06-a-12.32.56_b367e1d0.jpg
+gallery: []
 ---
