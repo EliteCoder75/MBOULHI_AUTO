@@ -4,7 +4,7 @@
   "description": "Site web MBOULHI AUTO avec Netlify CMS",
   "scripts": {
     "sync": "node scripts/sync-vehicles.js",
-    "build": "node scripts/sync-vehicles.js"
+    "build": "node scripts/copy-vehicles.js"
   },
   "dependencies": {
     "gray-matter": "^4.0.3"

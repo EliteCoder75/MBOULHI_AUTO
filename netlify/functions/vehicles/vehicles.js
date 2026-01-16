@@ -1,6 +1,8 @@
 /**
  * Netlify Function - API pour charger les véhicules depuis le CMS
  * Endpoint: /.netlify/functions/vehicles
+ *
+ * Note: Le dossier _vehicules doit être inclus dans le bundle de cette fonction
  */
 
 const fs = require('fs');
@@ -119,40 +121,24 @@ exports.handler = async (event, context) => {
             };
         }
 
-        // Chemin vers le dossier _vehicules
-        // Sur Netlify, essayer plusieurs chemins possibles
-        let vehiclesDir;
-        const possiblePaths = [
-            path.join(__dirname, '../../_vehicules'),           // Chemin relatif standard
-            path.join(process.cwd(), '_vehicules'),             // Depuis la racine du projet
-            '/opt/build/repo/_vehicules',                        // Chemin Netlify build
-            path.resolve(__dirname, '../../../_vehicules')       // Alternative
-        ];
+        // Le dossier _vehicules est maintenant dans le même dossier que cette fonction
+        const vehiclesDir = path.join(__dirname, '_vehicules');
 
-        // Trouver le bon chemin
-        for (const tryPath of possiblePaths) {
-            if (fs.existsSync(tryPath)) {
-                vehiclesDir = tryPath;
-                console.log('✅ Dossier _vehicules trouvé:', tryPath);
-                break;
-            }
-        }
+        console.log('📂 Chemin recherché:', vehiclesDir);
 
-        // Vérifier que le dossier a été trouvé
-        if (!vehiclesDir || !fs.existsSync(vehiclesDir)) {
+        // Vérifier que le dossier existe
+        if (!fs.existsSync(vehiclesDir)) {
             console.error('❌ Dossier _vehicules introuvable');
-            console.error('Chemins testés:', possiblePaths);
             console.error('__dirname:', __dirname);
-            console.error('process.cwd():', process.cwd());
+            console.error('Contenu du dossier:', fs.readdirSync(__dirname));
 
             return {
                 statusCode: 404,
                 headers,
                 body: JSON.stringify({
                     error: 'Dossier _vehicules introuvable',
-                    tried: possiblePaths,
                     __dirname: __dirname,
-                    cwd: process.cwd()
+                    content: fs.readdirSync(__dirname)
                 })
             };
         }
