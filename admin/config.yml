@@ -71,6 +71,7 @@ collections:
     label: "Paramètres"
     files:
       - label: "Informations de contact"
+
         name: "contact"
         file: "_settings/contact.json"
         fields:
