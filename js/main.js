@@ -295,6 +295,85 @@ async function displayVehicles() {
     });
 }
 
+// ===== AFFICHER LES VÉHICULES D'OCCASION =====
+async function displayVehiclesOccasion() {
+    const vehiclesContainer = document.getElementById('vehiclesContainer');
+    const resultsCount = document.getElementById('resultsCount');
+
+    if (!vehiclesContainer) return;
+
+    // Afficher un loader
+    vehiclesContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
+
+    // Obtenir tous les véhicules
+    const allVehicles = await getAllVehicles();
+
+    // Filtrer pour exclure les neufs (garder recent et occasion)
+    const vehicles = allVehicles.filter(vehicle => {
+        return vehicle.types && !vehicle.types.includes('neuf');
+    });
+
+    // Appliquer les autres filtres si présents
+    const filtered = vehicles.filter(vehicle => {
+        // Filtre par destination
+        if (currentFilters.destination && vehicle.destination !== currentFilters.destination) {
+            return false;
+        }
+
+        // Filtre par marque
+        if (currentFilters.brand) {
+            const searchBrand = currentFilters.brand.toLowerCase();
+            if (!vehicle.brand.toLowerCase().includes(searchBrand)) {
+                return false;
+            }
+        }
+
+        // Filtre par prix
+        if (currentFilters.minPrice && vehicle.price < Number(currentFilters.minPrice)) {
+            return false;
+        }
+        if (currentFilters.maxPrice && vehicle.price > Number(currentFilters.maxPrice)) {
+            return false;
+        }
+
+        // Filtre par carburant
+        if (currentFilters.fuel && vehicle.fuel !== currentFilters.fuel) {
+            return false;
+        }
+
+        // Filtre par transmission
+        if (currentFilters.transmission && vehicle.transmission !== currentFilters.transmission) {
+            return false;
+        }
+
+        return true;
+    });
+
+    // Afficher le nombre de résultats
+    if (resultsCount) {
+        resultsCount.textContent = `${filtered.length} véhicule${filtered.length > 1 ? 's' : ''} trouvé${filtered.length > 1 ? 's' : ''}`;
+    }
+
+    // Afficher les véhicules
+    vehiclesContainer.innerHTML = '';
+
+    if (filtered.length === 0) {
+        vehiclesContainer.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                <i class="fas fa-search" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
+                <h3>Aucun véhicule trouvé</h3>
+                <p style="color: var(--text-light);">Essayez de modifier vos critères de recherche</p>
+            </div>
+        `;
+        return;
+    }
+
+    filtered.forEach(vehicle => {
+        const card = createVehicleCard(vehicle);
+        vehiclesContainer.appendChild(card);
+    });
+}
+
 // ===== VOIR LES DÉTAILS D'UN VÉHICULE =====
 async function viewVehicleDetails(vehicleId) {
     console.log('Redirecting to detail page for vehicle ID:', vehicleId);

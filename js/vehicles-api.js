@@ -32,11 +32,12 @@ async function loadVehiclesFromAPI() {
         console.error('❌ Erreur lors du chargement des véhicules:', error);
 
         // Fallback: utiliser data.js si disponible
-        if (typeof vehiclesData !== 'undefined') {
-            console.log('⚠️ Utilisation du fallback data.js');
+        if (typeof vehiclesData !== 'undefined' && Array.isArray(vehiclesData)) {
+            console.log('⚠️ Utilisation du fallback data.js (' + vehiclesData.length + ' véhicules)');
             return vehiclesData;
         }
 
+        console.error('❌ Aucune donnée disponible (ni API ni data.js)');
         return [];
     }
 }
