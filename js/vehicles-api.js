@@ -12,32 +12,27 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
  */
 async function loadVehiclesFromAPI() {
     try {
-        console.log('📡 Chargement des véhicules depuis l\'API...');
+        console.log('📡 Chargement des véhicules depuis l\'API Netlify CMS...');
 
         const response = await fetch('/.netlify/functions/vehicles');
 
         if (!response.ok) {
-            throw new Error(`Erreur HTTP: ${response.status}`);
+            throw new Error(`Erreur HTTP: ${response.status} - Vérifiez que vous utilisez 'netlify dev' ou que le site est déployé sur Netlify`);
         }
 
         const data = await response.json();
 
         if (data.success && data.vehicles) {
-            console.log(`✅ ${data.count} véhicules chargés depuis l'API`);
+            console.log(`✅ ${data.count} véhicules chargés depuis le CMS Netlify`);
             return data.vehicles;
         } else {
             throw new Error('Réponse API invalide');
         }
     } catch (error) {
         console.error('❌ Erreur lors du chargement des véhicules:', error);
+        console.warn('💡 Pour tester en local, utilisez: netlify dev');
+        console.warn('💡 En production, l\'API fonctionne automatiquement sur Netlify');
 
-        // Fallback: utiliser data.js si disponible
-        if (typeof vehiclesData !== 'undefined' && Array.isArray(vehiclesData)) {
-            console.log('⚠️ Utilisation du fallback data.js (' + vehiclesData.length + ' véhicules)');
-            return vehiclesData;
-        }
-
-        console.error('❌ Aucune donnée disponible (ni API ni data.js)');
         return [];
     }
 }
