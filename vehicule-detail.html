@@ -45,6 +45,15 @@
         </nav>
     </header>
 
+    <!-- Page Header -->
+    <section class="page-header">
+        <div class="page-header-overlay"></div>
+        <div class="container" style="position: relative; z-index: 1;">
+            <h1 class="page-title">Détails du Véhicule</h1>
+            <p class="page-subtitle">Découvrez toutes les informations de ce véhicule</p>
+        </div>
+    </section>
+
     <!-- Vehicle Detail Section -->
     <section class="vehicle-detail-section section">
         <div class="container">
@@ -73,8 +82,6 @@
                     <h1 id="vehicleTitle" class="vehicle-title"></h1>
                     <p id="vehicleSubtitle" class="vehicle-subtitle"></p>
 
-                    <div class="vehicle-price" id="vehiclePrice"></div>
-
                     <button class="btn-contact-info">
                         <i class="fas fa-info-circle"></i>
                         Demander plus d'informations
@@ -83,6 +90,9 @@
                     <!-- Description Section -->
                     <div class="vehicle-description-card">
                         <h2>Description</h2>
+
+                        <div class="vehicle-price" id="vehiclePrice"></div>
+
                         <div class="description-grid">
                             <div class="desc-item">
                                 <span class="desc-label">Année</span>
@@ -126,25 +136,7 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Additional Description Text -->
-                    <div class="vehicle-desc-text" id="vehicleDescText"></div>
-
-                    <!-- Features -->
-                    <div class="vehicle-features" id="vehicleFeatures"></div>
                 </div>
-            </div>
-
-            <!-- Contact Buttons -->
-            <div class="vehicle-contact-actions">
-                <a href="tel:+33123456789" class="btn btn-primary">
-                    <i class="fas fa-phone"></i>
-                    Faire une offre
-                </a>
-                <a href="contact.html" class="btn btn-secondary">
-                    <i class="fas fa-calendar"></i>
-                    Planifier un essai routier
-                </a>
             </div>
         </div>
     </section>

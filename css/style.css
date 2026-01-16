@@ -139,8 +139,12 @@ ul {
 
 .nav-menu {
     display: flex;
-    gap: var(--spacing-md);
+    gap: 1.5rem;
     align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
 }
 
 .nav-link {

@@ -12,33 +12,45 @@ async function loadVehicleDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const vehicleId = urlParams.get('id');
 
+    console.log('Loading vehicle detail for ID:', vehicleId);
+
     if (!vehicleId) {
-        window.location.href = 'vehicules-occasion.html';
+        console.log('No vehicle ID found, redirecting...');
+        window.location.href = '/vehicules-occasion.html';
         return;
     }
 
     try {
-        // Load vehicle data
-        const vehicles = await fetch('_vehicules/')
-            .then(res => res.text())
-            .then(html => {
-                // Parse directory listing or use existing data
-                return getAllVehicles();
-            });
+        // Get vehicle from localStorage
+        const vehicleData = localStorage.getItem('currentVehicle');
 
-        const vehicle = vehicles.find(v => v.id == vehicleId);
+        if (!vehicleData) {
+            console.log('No vehicle data in localStorage, redirecting...');
+            window.location.href = '/vehicules-occasion.html';
+            return;
+        }
 
-        if (!vehicle) {
-            window.location.href = 'vehicules-occasion.html';
+        const vehicle = JSON.parse(vehicleData);
+
+        console.log('Found vehicle:', vehicle);
+
+        // Verify the ID matches
+        if (vehicle.id != vehicleId) {
+            console.log('Vehicle ID mismatch, redirecting...');
+            window.location.href = '/vehicules-occasion.html';
             return;
         }
 
         // Display vehicle details
         displayVehicleDetail(vehicle);
 
+        // Clear localStorage after loading
+        localStorage.removeItem('currentVehicle');
+
     } catch (error) {
         console.error('Error loading vehicle:', error);
-        window.location.href = 'vehicules-occasion.html';
+        alert('Erreur lors du chargement du véhicule. Redirection...');
+        window.location.href = '/vehicules-occasion.html';
     }
 }
 

@@ -262,12 +262,13 @@
     </button>
 
     <script src="js/data.js"></script>
+    <script src="js/vehicles-api.js"></script>
     <script src="js/main.js"></script>
     <script>
         // Filtrer uniquement les véhicules neufs
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             currentFilters.type = 'neuf';
-            displayVehicles();
+            await displayVehicles();
         });
     </script>
 </body>

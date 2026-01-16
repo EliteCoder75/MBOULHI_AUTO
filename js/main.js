@@ -86,12 +86,15 @@ function initScrollEffects() {
 }
 
 // ===== CHARGEMENT DES VÉHICULES EN VEDETTE (Page d'accueil) =====
-function initFeaturedVehicles() {
+async function initFeaturedVehicles() {
     const featuredContainer = document.getElementById('featuredVehicles');
 
     if (!featuredContainer) return;
 
-    const featured = getFeaturedVehicles(6);
+    // Afficher un loader
+    featuredContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
+
+    const featured = await getFeaturedVehicles(6);
     featuredContainer.innerHTML = '';
 
     featured.forEach(vehicle => {
@@ -247,11 +250,14 @@ function initFilters() {
 }
 
 // ===== AFFICHER LES VÉHICULES =====
-function displayVehicles() {
+async function displayVehicles() {
     const vehiclesContainer = document.getElementById('vehiclesContainer');
     const resultsCount = document.getElementById('resultsCount');
 
     if (!vehiclesContainer) return;
+
+    // Afficher un loader
+    vehiclesContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
 
     // Nettoyer les filtres vides
     const cleanFilters = {};
@@ -262,7 +268,7 @@ function displayVehicles() {
     }
 
     // Obtenir les véhicules filtrés
-    const vehicles = filterVehicles(cleanFilters);
+    const vehicles = await filterVehicles(cleanFilters);
 
     // Afficher le nombre de résultats
     if (resultsCount) {
@@ -290,9 +296,20 @@ function displayVehicles() {
 }
 
 // ===== VOIR LES DÉTAILS D'UN VÉHICULE =====
-function viewVehicleDetails(vehicleId) {
+async function viewVehicleDetails(vehicleId) {
     console.log('Redirecting to detail page for vehicle ID:', vehicleId);
-    console.log('Current URL:', window.location.href);
+
+    // Find the vehicle data
+    const vehicle = await getVehicleById(vehicleId);
+
+    if (!vehicle) {
+        console.error('Vehicle not found with ID:', vehicleId);
+        return;
+    }
+
+    // Store vehicle data in localStorage for the detail page
+    localStorage.setItem('currentVehicle', JSON.stringify(vehicle));
+
     // Redirect to detail page
     window.location.href = `/vehicule-detail.html?id=${vehicleId}`;
 }

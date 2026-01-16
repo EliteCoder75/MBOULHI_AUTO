@@ -65,12 +65,6 @@ collections:
         max: 10
         hint: "Ajoutez jusqu'à 10 images supplémentaires pour la galerie"
       - {label: "Description", name: "desc", widget: "text", required: false}
-      - label: "Caractéristiques"
-        name: "features"
-        widget: "list"
-        required: false
-        field: {label: "Caractéristique", name: "feature", widget: "string"}
-        max: 10
 
   # Collection pour les paramètres du site
   - name: "settings"

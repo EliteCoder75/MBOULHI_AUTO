@@ -274,13 +274,14 @@
     </button>
 
     <script src="js/data.js"></script>
+    <script src="js/vehicles-api.js"></script>
     <script src="js/main.js"></script>
     <script>
         // Filtrer uniquement les véhicules d'occasion (recent + occasion)
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             // Forcer le filtre pour n'afficher que les occasions et récents
             currentFilters.excludeNeuf = true;
-            displayVehiclesOccasion();
+            await displayVehiclesOccasion();
 
             // Gestion du filtre catégorie
             const filterCategory = document.getElementById('filterCategory');
