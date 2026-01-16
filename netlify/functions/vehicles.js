@@ -120,16 +120,39 @@ exports.handler = async (event, context) => {
         }
 
         // Chemin vers le dossier _vehicules
-        const vehiclesDir = path.join(__dirname, '../../_vehicules');
+        // Sur Netlify, essayer plusieurs chemins possibles
+        let vehiclesDir;
+        const possiblePaths = [
+            path.join(__dirname, '../../_vehicules'),           // Chemin relatif standard
+            path.join(process.cwd(), '_vehicules'),             // Depuis la racine du projet
+            '/opt/build/repo/_vehicules',                        // Chemin Netlify build
+            path.resolve(__dirname, '../../../_vehicules')       // Alternative
+        ];
 
-        // Vérifier que le dossier existe
-        if (!fs.existsSync(vehiclesDir)) {
+        // Trouver le bon chemin
+        for (const tryPath of possiblePaths) {
+            if (fs.existsSync(tryPath)) {
+                vehiclesDir = tryPath;
+                console.log('✅ Dossier _vehicules trouvé:', tryPath);
+                break;
+            }
+        }
+
+        // Vérifier que le dossier a été trouvé
+        if (!vehiclesDir || !fs.existsSync(vehiclesDir)) {
+            console.error('❌ Dossier _vehicules introuvable');
+            console.error('Chemins testés:', possiblePaths);
+            console.error('__dirname:', __dirname);
+            console.error('process.cwd():', process.cwd());
+
             return {
                 statusCode: 404,
                 headers,
                 body: JSON.stringify({
                     error: 'Dossier _vehicules introuvable',
-                    path: vehiclesDir
+                    tried: possiblePaths,
+                    __dirname: __dirname,
+                    cwd: process.cwd()
                 })
             };
         }
