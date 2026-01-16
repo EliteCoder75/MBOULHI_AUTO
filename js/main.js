@@ -424,32 +424,37 @@ function initContactForm() {
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
 
-        // Récupérer les données du formulaire
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-
         // Validation basique
-        if (!formData.name || !formData.email || !formData.message) {
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const message = document.getElementById('message').value;
+
+        if (!name || !email || !message) {
             alert('Veuillez remplir tous les champs obligatoires');
             return;
         }
 
-        // Pour l'instant, on redirige vers WhatsApp
-        const whatsappMessage = `Nouveau message de contact :\n\nNom : ${formData.name}\nEmail : ${formData.email}\nTéléphone : ${formData.phone || 'Non renseigné'}\nSujet : ${formData.subject}\n\nMessage :\n${formData.message}`;
+        // Récupérer les données du formulaire pour Netlify
+        const formData = new FormData(contactForm);
 
-        const whatsappUrl = `https://wa.me/33123456789?text=${encodeURIComponent(whatsappMessage)}`;
-        window.open(whatsappUrl, '_blank');
-
-        // Réinitialiser le formulaire
-        contactForm.reset();
-
-        // Message de confirmation
-        alert('Merci pour votre message ! Vous allez être redirigé vers WhatsApp.');
+        // Envoyer à Netlify Forms
+        fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(formData).toString()
+        })
+        .then(response => {
+            if (response.ok) {
+                // Rediriger vers la page de confirmation
+                window.location.href = '/confirmation.html';
+            } else {
+                throw new Error('Erreur lors de l\'envoi');
+            }
+        })
+        .catch(error => {
+            console.error('Erreur:', error);
+            alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par WhatsApp.');
+        });
     });
 }
 

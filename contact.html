@@ -33,9 +33,8 @@
                     </ul>
 
                     <div class="nav-actions">
-                        <a href="tel:+33123456789" class="btn-call">
-                            <i class="fas fa-phone"></i>
-                            <span>Appelez-nous</span>
+                        <a href="https://wa.me/33123456789" class="btn btn-call" target="_blank">
+                            <i class="fab fa-whatsapp"></i> WhatsApp
                         </a>
                     </div>
                 </div>
@@ -61,7 +60,11 @@
                     <h2>Envoyez-nous un Message</h2>
                     <p class="form-intro">Remplissez le formulaire ci-dessous et nous vous répondrons dans les plus brefs délais.</p>
 
-                    <form id="contactForm" class="contact-form">
+                    <form id="contactForm" class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                        <input type="hidden" name="form-name" value="contact">
+                        <p class="hidden" style="display:none;">
+                            <label>Ne pas remplir si vous êtes humain: <input name="bot-field"></label>
+                        </p>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="name">
