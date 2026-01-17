@@ -5,7 +5,107 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     loadVehicleDetail();
+    initContactModal();
 });
+
+// ===== CONTACT MODAL =====
+function initContactModal() {
+    const contactBtn = document.querySelector('.btn-contact-info');
+    const modal = document.getElementById('contactModal');
+    const modalOverlay = document.getElementById('modalOverlay');
+    const modalClose = document.getElementById('modalClose');
+    const emailOptionBtn = document.getElementById('emailOptionBtn');
+    const backToOptions = document.getElementById('backToOptions');
+    const contactOptions = document.querySelector('.contact-options');
+    const emailFormContainer = document.getElementById('emailFormContainer');
+    const contactForm = document.getElementById('contactForm');
+
+    // Open modal
+    if (contactBtn) {
+        contactBtn.addEventListener('click', function() {
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            // Reset to options view
+            showOptions();
+        });
+    }
+
+    // Close modal
+    function closeModal() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    if (modalClose) {
+        modalClose.addEventListener('click', closeModal);
+    }
+
+    if (modalOverlay) {
+        modalOverlay.addEventListener('click', closeModal);
+    }
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Show email form
+    if (emailOptionBtn) {
+        emailOptionBtn.addEventListener('click', function() {
+            contactOptions.classList.add('hidden');
+            emailFormContainer.classList.add('active');
+            // Pre-fill vehicle info
+            const vehicleTitle = document.getElementById('vehicleTitle')?.textContent || '';
+            const vehiclePrice = document.getElementById('vehiclePrice')?.textContent || '';
+            document.getElementById('vehicleInfo').value = `${vehicleTitle} - ${vehiclePrice}`;
+            // Pre-fill message with vehicle info
+            const messageField = document.getElementById('contactMessage');
+            if (messageField && !messageField.value) {
+                messageField.value = `Bonjour,\n\nJe suis intéressé(e) par le véhicule ${vehicleTitle} affiché à ${vehiclePrice}.\n\nMerci de me contacter pour plus d'informations.`;
+            }
+        });
+    }
+
+    // Back to options
+    function showOptions() {
+        contactOptions.classList.remove('hidden');
+        emailFormContainer.classList.remove('active');
+    }
+
+    if (backToOptions) {
+        backToOptions.addEventListener('click', showOptions);
+    }
+
+    // Form submission
+    if (contactForm) {
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const phone = document.getElementById('contactPhone').value;
+            const message = document.getElementById('contactMessage').value;
+            const vehicleInfo = document.getElementById('vehicleInfo').value;
+
+            // Create mailto link
+            const subject = encodeURIComponent(`Demande d'information - ${vehicleInfo}`);
+            const body = encodeURIComponent(
+                `Nom: ${name}\n` +
+                `Email: ${email}\n` +
+                `Téléphone: ${phone || 'Non renseigné'}\n\n` +
+                `Véhicule: ${vehicleInfo}\n\n` +
+                `Message:\n${message}`
+            );
+
+            window.location.href = `mailto:contact@mboulhiauto.fr?subject=${subject}&body=${body}`;
+
+            // Close modal after a short delay
+            setTimeout(closeModal, 500);
+        });
+    }
+}
 
 async function loadVehicleDetail() {
     // Get vehicle ID from URL parameters
