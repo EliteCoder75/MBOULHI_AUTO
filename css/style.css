@@ -239,11 +239,11 @@ ul {
     height: 100vh;
     min-height: 700px;
     display: flex;
-    align-items: center;    
+    align-items: center;
     justify-content: center;
     background-image: url('../images/photo_de_couverture.png');
     background-size: cover;
-    background-position:left;
+    background-position: left;
     background-attachment: fixed;
     overflow: hidden;
 }
@@ -636,12 +636,15 @@ ul {
 }
 
 .vehicle-card {
-    background: var(--bg-light);
-    border-radius: 12px;
+    background: var(--secondary-color);
+    border-radius: 10px;
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
     cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .vehicle-card:hover {
@@ -651,7 +654,7 @@ ul {
 
 .vehicle-image {
     position: relative;
-    height: 220px;
+    height: 160px;
     overflow: hidden;
     background-color: var(--bg-gray);
 }
@@ -669,64 +672,69 @@ ul {
 
 .vehicle-badge {
     position: absolute;
-    top: 15px;
-    left: 15px;
+    top: 10px;
+    left: 10px;
     background-color: var(--primary-color);
     color: var(--text-white);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+    font-size: 0.7rem;
     font-weight: 700;
     text-transform: uppercase;
 }
 
 .vehicle-price {
     position: absolute;
-    bottom: 15px;
-    right: 15px;
+    bottom: 10px;
+    right: 10px;
     background-color: rgba(0, 0, 0, 0.8);
     color: var(--text-white);
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    font-size: 1.2rem;
+    padding: 0.4rem 0.8rem;
+    border-radius: 15px;
+    font-size: 1rem;
     font-weight: 900;
 }
 
 .vehicle-info {
-    padding: 1.5rem;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
 }
 
 .vehicle-title {
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 700;
-    margin-bottom: 0.5rem;
-    color: var(--text-dark);
+    margin-bottom: 0.3rem;
+    color: var(--text-white);
 }
 
 .vehicle-subtitle {
-    font-size: 0.95rem;
-    color: var(--text-light);
-    margin-bottom: 1rem;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.7);
+    margin-bottom: 0.5rem;
 }
 
 .vehicle-specs {
     display: flex;
-    gap: 1rem;
+    gap: 0.8rem;
     flex-wrap: wrap;
-    padding-top: 1rem;
-    border-top: 1px solid var(--border-color);
+    padding-top: 0.8rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: auto;
 }
 
 .spec-item {
     display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.9rem;
-    color: var(--text-light);
+    gap: 0.3rem;
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.7);
 }
 
 .spec-item i {
     color: var(--primary-color);
+    font-size: 0.7rem;
 }
 
 /* ===== FEATURES GRID ===== */
@@ -1304,6 +1312,133 @@ ul {
     color: var(--text-white);
 }
 
+/* ===== VEHICLE MODAL ===== */
+.vehicle-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+}
+
+.vehicle-modal.active {
+    display: flex;
+}
+
+.vehicle-modal-content {
+    background: var(--bg-light);
+    border-radius: 20px;
+    padding: 2.5rem;
+    max-width: 600px;
+    width: 100%;
+    position: relative;
+    animation: modalSlideIn 0.3s ease;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: var(--transition-fast);
+}
+
+.modal-close:hover {
+    color: var(--primary-color);
+}
+
+.vehicle-modal-content h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    color: var(--text-dark);
+}
+
+.modal-options {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.modal-option {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 2rem 1.5rem;
+    border-radius: 15px;
+    background: var(--bg-gray);
+    text-decoration: none;
+    color: var(--text-dark);
+    transition: var(--transition-normal);
+    border: 2px solid transparent;
+}
+
+.modal-option:hover {
+    border-color: var(--primary-color);
+    background: var(--bg-light);
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(220, 20, 60, 0.2);
+}
+
+.modal-option-icon {
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.modal-option-icon i {
+    font-size: 1.8rem;
+    color: var(--text-white);
+}
+
+.modal-option h3 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-option p {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin: 0;
+}
+
+@media (max-width: 576px) {
+    .modal-options {
+        flex-direction: column;
+    }
+
+    .vehicle-modal-content {
+        padding: 1.5rem;
+    }
+}
+
 /* ===== RESPONSIVE DESIGN ===== */
 
 /* Tablettes */
@@ -1358,122 +1493,347 @@ ul {
         display: none;
     }
 
+    /* ===== HERO MOBILE ===== */
     .hero {
-        min-height: 900px;
+        min-height: 100vh;
         height: auto;
-        background-attachment: scroll; /* Désactiver parallax sur mobile pour afficher l'image */
+        background-image: url('../images/ab.png') !important;
+        background-attachment: scroll;
+        background-position: center;
+        background-size: cover;
     }
 
     .hero-content {
-        margin-top: 100px; /* Plus d'espace pour ne pas être caché par le header */
-        padding: var(--spacing-sm);
+        margin-top: 80px;
+        padding: 1rem;
     }
 
     .hero-title {
-        font-size: 2.5rem;
-        display: block;
-        
-        margin-top: 6rem;
+        font-size: 2rem;
+        margin-top: 2rem;
     }
 
     .hero-subtitle {
-        display: block; /* S'assurer qu'il est visible */
-        margin-bottom: 1rem;
-        font: bold;
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
     }
 
     .hero-description {
-        font-size: 1.1rem;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
     }
 
     .hero-cta {
         flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .hero-cta .btn {
+        width: 100%;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.85rem;
     }
 
     .hero-stats {
-        flex-direction: column;
-        gap: 1rem;
-        margin-top: 2rem;
-        margin-bottom: 2rem;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-top: 1.5rem;
+        justify-content: center;
     }
 
     .stat-item {
-        width: 100%;
-        padding: 1rem 1.5rem; /* Réduire padding */
-        display: flex !important;
-        visibility: visible !important;
+        width: auto;
+        padding: 0.6rem 1rem;
+        flex: 0 0 auto;
     }
 
     .stat-number {
-        font-size: 1.5rem; /* Réduire taille du nombre */
+        font-size: 1.2rem;
     }
 
     .stat-label {
-        font-size: 0.8rem; /* Réduire taille du label */
+        font-size: 0.65rem;
     }
 
     .stat-item i {
-        font-size: 2rem; /* Réduire taille icône */
+        font-size: 1.2rem;
     }
 
-    /* Page Header mobile */
+    /* ===== SECTIONS MOBILE ===== */
+    .section {
+        padding: 2rem 0;
+    }
+
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .section-header {
+        margin-bottom: 1.5rem;
+    }
+
+    /* ===== CONCEPT CARDS MOBILE ===== */
+    .concepts-grid {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .concepts-grid .concept-card-link {
+        flex: none;
+        max-width: 100%;
+    }
+
+    .concept-card {
+        height: 200px;
+    }
+
+    .concept-title {
+        font-size: 1.5rem;
+    }
+
+    /* ===== FEATURE CARDS MOBILE ===== */
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 0.8rem;
+    }
+
+    .feature-card {
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        text-align: left;
+        gap: 1rem;
+    }
+
+    .feature-icon {
+        width: 45px;
+        height: 45px;
+        min-width: 45px;
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .feature-card h3 {
+        font-size: 0.95rem;
+        margin-bottom: 0.2rem;
+    }
+
+    .feature-card p {
+        font-size: 0.8rem;
+        line-height: 1.4;
+        margin: 0;
+    }
+
+    /* ===== VEHICLE CARDS MOBILE ===== */
+    .vehicles-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .vehicle-card {
+        border-radius: 8px;
+    }
+
+    .vehicle-image {
+        height: 140px;
+    }
+
+    .vehicle-info {
+        padding: 0.8rem;
+    }
+
+    .vehicle-title {
+        font-size: 0.9rem;
+    }
+
+    .vehicle-subtitle {
+        font-size: 0.75rem;
+    }
+
+    .vehicle-specs {
+        gap: 0.5rem;
+        padding-top: 0.5rem;
+    }
+
+    .spec-item {
+        font-size: 0.7rem;
+    }
+
+    /* ===== TESTIMONIALS MOBILE ===== */
+    .reviews-container {
+        gap: 1rem;
+    }
+
+    .review-card {
+        padding: 1rem;
+    }
+
+    .review-text {
+        font-size: 0.85rem;
+    }
+
+    .reviewer-name {
+        font-size: 0.9rem;
+    }
+
+    /* ===== CTA SECTION MOBILE ===== */
+    .cta-content h2 {
+        font-size: 1.4rem;
+    }
+
+    .cta-content p {
+        font-size: 0.9rem;
+    }
+
+    .cta-buttons {
+        flex-direction: column;
+        gap: 0.8rem;
+    }
+
+    .cta-buttons .btn {
+        width: 100%;
+    }
+
+    /* ===== PAGE HEADER MOBILE ===== */
     .page-header {
-        padding: 120px 0 60px;
+        padding: 100px 0 40px;
         margin-top: 0;
         background-attachment: scroll;
     }
 
     .page-title {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     .page-subtitle {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
     }
 
-    .section {
-        padding: var(--spacing-md) 0;
-    }
-
-    .cta-content h2 {
-        font-size: 1.8rem;
-    }
-
-    .cta-buttons {
-        flex-direction: column;
+    /* ===== FOOTER MOBILE ===== */
+    .footer {
+        padding: 2rem 0 1rem;
     }
 
     .footer-grid {
         grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .footer-column h4 {
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+    }
+
+    .footer-description {
+        font-size: 0.85rem;
+    }
+
+    .footer-links li {
+        margin-bottom: 0.4rem;
+    }
+
+    .footer-links a {
+        font-size: 0.85rem;
     }
 
     .footer-bottom {
         flex-direction: column;
         text-align: center;
+        padding-top: 1rem;
+        gap: 0.5rem;
+    }
+
+    .footer-bottom p {
+        font-size: 0.8rem;
+    }
+
+    /* ===== CONTACT INFO MOBILE ===== */
+    .contact-info-card {
+        padding: 1rem;
+    }
+
+    .info-item {
+        padding: 0.8rem;
+    }
+
+    .info-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 1rem;
+    }
+
+    /* ===== MODAL MOBILE ===== */
+    .vehicle-modal-content {
+        padding: 1.5rem;
+        margin: 1rem;
+    }
+
+    .vehicle-modal-content h2 {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .modal-options {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .modal-option {
+        padding: 1.2rem;
+    }
+
+    .modal-option-icon {
+        width: 50px;
+        height: 50px;
+    }
+
+    .modal-option-icon i {
+        font-size: 1.3rem;
+    }
+
+    .modal-option h3 {
+        font-size: 1rem;
+    }
+
+    .modal-option p {
+        font-size: 0.75rem;
     }
 }
 
 @media (max-width: 480px) {
     .logo img {
-        height: 120px; /* Logo plus grand sur mobile */
-        background-image: none;
+        height: 80px;
+    }
+
+    .hero {
+        background-size: 180%;
     }
 
     .hero-title {
-        font-size: 2rem;
+        font-size: 1.6rem;
     }
 
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 0.8rem;
+    }
+
+    .hero-description {
+        font-size: 0.85rem;
     }
 
     .section-title {
-        font-size: 1.8rem;
+        font-size: 1.3rem;
     }
 
     .btn {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.9rem;
+        padding: 0.7rem 1.2rem;
+        font-size: 0.8rem;
     }
 
     .whatsapp-float {

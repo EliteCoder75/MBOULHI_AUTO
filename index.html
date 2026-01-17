@@ -36,7 +36,7 @@
 
                     <div class="nav-actions">
                         
-                        <a href="https://wa.me/33123456789" class="btn btn-call" target="_blank">
+                        <a href="https://wa.me/33636121035" class="btn btn-call" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
                         
@@ -60,9 +60,9 @@
                     Spécialistes de l'export France - Algérie - Europe
                 </p>
                 <div class="hero-cta">
-                    <a href="#concepts" class="btn btn-primary">
+                    <button class="btn btn-primary" onclick="openVehicleModal()">
                         <i class="fas fa-car"></i> Découvrir nos véhicules
-                    </a>
+                    </button>
                     <a href="contact.html" class="btn btn-outline">
                         <i class="fas fa-envelope"></i> Nous contacter
                     </a>
@@ -139,9 +139,9 @@
             </div>
 
             <div class="section-cta">
-                <a href="#concepts" class="btn btn-primary">
+                <button class="btn btn-primary" onclick="openVehicleModal()">
                     Voir tous les véhicules <i class="fas fa-arrow-right"></i>
-                </a>
+                </button>
             </div>
         </div>
     </section>
@@ -309,14 +309,14 @@
                         <i class="fas fa-clock"></i>
                         <div>
                             <strong>Horaires</strong>
-                            <p>Lun-Sam: 9h-19h | Sur rendez-vous</p>
+                            <p>Mar-Dim: 10h-19h | Sur rendez-vous</p>
                         </div>
                     </div>
                     <div class="map-info-item">
                         <i class="fas fa-phone"></i>
                         <div>
                             <strong>Téléphone</strong>
-                            <p><a href="tel:+33123456789">+33 1 23 45 67 89</a></p>
+                            <p><a href="tel:+33636121035">+33 6 36 12 10 35</a></p>
                         </div>
                     </div>
                 </div>
@@ -331,10 +331,10 @@
                 <h2>Prêt à Trouver Votre Véhicule Idéal ?</h2>
                 <p>Contactez-nous dès maintenant et bénéficiez de notre expertise automobile</p>
                 <div class="cta-buttons">
-                    <a href="https://wa.me/33123456789" class="btn btn-whatsapp" target="_blank">
+                    <a href="https://wa.me/33636121035" class="btn btn-whatsapp" target="_blank">
                         <i class="fab fa-whatsapp"></i> WhatsApp
                     </a>
-                    <a href="tel:+33123456789" class="btn btn-phone">
+                    <a href="tel:+33636121035" class="btn btn-phone">
                         <i class="fas fa-phone"></i> Appeler maintenant
                     </a>
                     <a href="contact.html" class="btn btn-outline-white">
@@ -344,6 +344,32 @@
             </div>
         </div>
     </section>
+
+    <!-- Modal Choix Véhicules -->
+    <div id="vehicleModal" class="vehicle-modal">
+        <div class="vehicle-modal-content">
+            <button class="modal-close" onclick="closeVehicleModal()">
+                <i class="fas fa-times"></i>
+            </button>
+            <h2>Quel type de véhicule recherchez-vous ?</h2>
+            <div class="modal-options">
+                <a href="vehicules-neufs.html" class="modal-option">
+                    <div class="modal-option-icon">
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <h3>Véhicules Neufs</h3>
+                    <p>Pour l'export vers l'Algérie et autres destinations</p>
+                </a>
+                <a href="vehicules-occasion.html" class="modal-option">
+                    <div class="modal-option-icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3>Véhicules d'Occasion</h3>
+                    <p>Véhicules récents pour l'Europe ou pour l'Algerie (moin de 3 ans)</p>
+                </a>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
@@ -394,7 +420,7 @@
                     <ul class="footer-contact">
                         <li>
                             <i class="fas fa-phone"></i>
-                            <a href="tel:+33123456789">+33 1 23 45 67 89</a>
+                            <a href="tel:+33636121035">+33 6 36 12 10 35</a>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
@@ -402,11 +428,11 @@
                         </li>
                         <li>
                             <i class="fas fa-map-marker-alt"></i>
-                            <span>Paris, France</span>
+                            <span>69 chem. Neuf, 69780 Toussieu</span>
                         </li>
                         <li>
                             <i class="fas fa-clock"></i>
-                            <span>Lun-Sam: 9h-19h</span>
+                            <span>Mar-Dim: 10h-19h</span>
                         </li>
                     </ul>
                 </div>
@@ -424,7 +450,7 @@
     </footer>
 
     <!-- Bouton WhatsApp flottant -->
-    <a href="https://wa.me/33123456789" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
+    <a href="https://wa.me/33636121035" class="whatsapp-float" target="_blank" aria-label="Contactez-nous sur WhatsApp">
         <i class="fab fa-whatsapp"></i>
     </a>
 

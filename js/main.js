@@ -6,6 +6,38 @@
 // ===== VARIABLES GLOBALES =====
 let currentFilters = {};
 
+// ===== MODAL VÉHICULES =====
+function openVehicleModal() {
+    const modal = document.getElementById('vehicleModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeVehicleModal() {
+    const modal = document.getElementById('vehicleModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+// Fermer le modal en cliquant en dehors
+document.addEventListener('click', function(e) {
+    const modal = document.getElementById('vehicleModal');
+    if (modal && e.target === modal) {
+        closeVehicleModal();
+    }
+});
+
+// Fermer le modal avec Escape
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        closeVehicleModal();
+    }
+});
+
 // ===== INITIALISATION AU CHARGEMENT DU DOM =====
 document.addEventListener('DOMContentLoaded', function() {
     initNavigation();
