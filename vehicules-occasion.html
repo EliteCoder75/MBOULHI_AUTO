@@ -263,48 +263,151 @@
     <script src="js/vehicles-api.js"></script>
     <script src="js/main.js"></script>
     <script>
-        // Filtrer uniquement les véhicules d'occasion (recent + occasion)
+        // Page Véhicules d'Occasion - Afficher occasion + moins de 3 ans (EXCLURE neufs)
+
         document.addEventListener('DOMContentLoaded', async function() {
-            // Forcer le filtre pour n'afficher que les occasions et récents
-            currentFilters.excludeNeuf = true;
+            // Charger les véhicules d'occasion
             await displayVehiclesOccasion();
+
+            // Remplacer le comportement du bouton réinitialiser
+            const resetBtn = document.getElementById('resetFilters');
+            if (resetBtn) {
+                const newResetBtn = resetBtn.cloneNode(true);
+                resetBtn.parentNode.replaceChild(newResetBtn, resetBtn);
+
+                newResetBtn.addEventListener('click', function() {
+                    // Réinitialiser tous les filtres (pas de type par défaut pour occasion)
+                    currentFilters = {};
+
+                    // Réinitialiser les champs du formulaire
+                    const filterCategory = document.getElementById('filterCategory');
+                    const filterBrand = document.getElementById('filterBrand');
+                    const filterMinPrice = document.getElementById('filterMinPrice');
+                    const filterMaxPrice = document.getElementById('filterMaxPrice');
+                    const filterFuel = document.getElementById('filterFuel');
+                    const filterTransmission = document.getElementById('filterTransmission');
+
+                    if (filterCategory) filterCategory.value = '';
+                    if (filterBrand) filterBrand.value = '';
+                    if (filterMinPrice) filterMinPrice.value = '';
+                    if (filterMaxPrice) filterMaxPrice.value = '';
+                    if (filterFuel) filterFuel.value = '';
+                    if (filterTransmission) filterTransmission.value = '';
+
+                    displayVehiclesOccasion();
+                });
+            }
 
             // Gestion du filtre catégorie
             const filterCategory = document.getElementById('filterCategory');
             if (filterCategory) {
                 filterCategory.addEventListener('change', function() {
                     if (this.value === 'recent') {
-                        currentFilters.type = 'recent';
+                        currentFilters.categoryFilter = 'recent';
                     } else if (this.value === 'occasion') {
-                        currentFilters.type = 'occasion';
+                        currentFilters.categoryFilter = 'occasion';
                     } else {
-                        delete currentFilters.type;
+                        delete currentFilters.categoryFilter;
                     }
                     displayVehiclesOccasion();
                 });
             }
+
+            // Initialiser les autres filtres
+            initOccasionFilters();
         });
 
-        // Fonction personnalisée pour afficher les véhicules d'occasion
-        function displayVehiclesOccasion() {
+        function initOccasionFilters() {
+            const filterBrand = document.getElementById('filterBrand');
+            const filterMinPrice = document.getElementById('filterMinPrice');
+            const filterMaxPrice = document.getElementById('filterMaxPrice');
+            const filterFuel = document.getElementById('filterFuel');
+            const filterTransmission = document.getElementById('filterTransmission');
+
+            if (filterBrand) {
+                filterBrand.addEventListener('input', function() {
+                    currentFilters.brand = this.value || null;
+                    displayVehiclesOccasion();
+                });
+            }
+
+            if (filterMinPrice) {
+                filterMinPrice.addEventListener('input', function() {
+                    currentFilters.minPrice = this.value || null;
+                    displayVehiclesOccasion();
+                });
+            }
+
+            if (filterMaxPrice) {
+                filterMaxPrice.addEventListener('input', function() {
+                    currentFilters.maxPrice = this.value || null;
+                    displayVehiclesOccasion();
+                });
+            }
+
+            if (filterFuel) {
+                filterFuel.addEventListener('change', function() {
+                    currentFilters.fuel = this.value || null;
+                    displayVehiclesOccasion();
+                });
+            }
+
+            if (filterTransmission) {
+                filterTransmission.addEventListener('change', function() {
+                    currentFilters.transmission = this.value || null;
+                    displayVehiclesOccasion();
+                });
+            }
+        }
+
+        async function displayVehiclesOccasion() {
             const vehiclesContainer = document.getElementById('vehiclesContainer');
             const resultsCount = document.getElementById('resultsCount');
 
             if (!vehiclesContainer) return;
 
-            // Nettoyer les filtres vides
-            const cleanFilters = {};
-            for (let key in currentFilters) {
-                if (currentFilters[key]) {
-                    cleanFilters[key] = currentFilters[key];
-                }
+            // Afficher un loader
+            vehiclesContainer.innerHTML = '<div style="grid-column: 1/-1; text-align: center; padding: 3rem;"><i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: var(--primary-color);"></i></div>';
+
+            // Obtenir tous les véhicules
+            const allVehicles = await getAllVehicles();
+
+            // Filtrer pour EXCLURE les véhicules neufs
+            // Garder uniquement: occasion, recent, moins de 3 ans
+            let vehicles = allVehicles.filter(vehicle => {
+                if (!vehicle.types) return false;
+                // Exclure les véhicules qui ont UNIQUEMENT le tag "neuf"
+                if (vehicle.types.includes('neuf') && vehicle.types.length === 1) return false;
+                // Garder si contient occasion, recent, ou moins de 3 ans
+                return vehicle.types.includes('occasion') ||
+                       vehicle.types.includes('recent') ||
+                       vehicle.types.includes('moins de 3 ans');
+            });
+
+            // Appliquer le filtre de catégorie si sélectionné
+            if (currentFilters.categoryFilter === 'recent') {
+                vehicles = vehicles.filter(v =>
+                    v.types.includes('recent') || v.types.includes('moins de 3 ans')
+                );
+            } else if (currentFilters.categoryFilter === 'occasion') {
+                vehicles = vehicles.filter(v =>
+                    v.types.includes('occasion') &&
+                    !v.types.includes('recent') &&
+                    !v.types.includes('moins de 3 ans')
+                );
             }
 
-            // Obtenir les véhicules et filtrer pour exclure les neufs
-            let vehicles = filterVehicles(cleanFilters);
-            vehicles = vehicles.filter(v => {
-                // Garder seulement les véhicules qui ont "occasion" ou "recent" dans leurs types
-                return v.types && (v.types.includes('occasion') || v.types.includes('recent'));
+            // Appliquer les autres filtres
+            vehicles = vehicles.filter(vehicle => {
+                if (currentFilters.brand) {
+                    const searchBrand = currentFilters.brand.toLowerCase();
+                    if (!vehicle.brand.toLowerCase().includes(searchBrand)) return false;
+                }
+                if (currentFilters.minPrice && vehicle.price < Number(currentFilters.minPrice)) return false;
+                if (currentFilters.maxPrice && vehicle.price > Number(currentFilters.maxPrice)) return false;
+                if (currentFilters.fuel && vehicle.fuel !== currentFilters.fuel) return false;
+                if (currentFilters.transmission && vehicle.transmission !== currentFilters.transmission) return false;
+                return true;
             });
 
             // Afficher le nombre de résultats
@@ -319,7 +422,7 @@
                 vehiclesContainer.innerHTML = `
                     <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
                         <i class="fas fa-search" style="font-size: 3rem; color: var(--text-light); margin-bottom: 1rem;"></i>
-                        <h3>Aucun véhicule trouvé</h3>
+                        <h3 style="color: white;">Aucun véhicule trouvé</h3>
                         <p style="color: var(--text-light);">Essayez de modifier vos critères de recherche</p>
                     </div>
                 `;
