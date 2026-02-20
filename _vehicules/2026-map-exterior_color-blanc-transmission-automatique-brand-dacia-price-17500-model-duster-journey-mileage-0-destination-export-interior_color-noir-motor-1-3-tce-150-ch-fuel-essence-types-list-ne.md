@@ -2,8 +2,10 @@
 id: 2
 year: 2026
 brand: dacia
-model: duster journey
-condition: neuf
+model: "duster "
+finition: journey
+condition:
+  - neuf
 mileage: 0
 transmission: Automatique
 motor: 1.3 tce 150 ch
