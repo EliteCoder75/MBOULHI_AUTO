@@ -20,7 +20,14 @@ collections:
       - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2015, max: 2026}
       - {label: "Marque", name: "brand", widget: "string"}
       - {label: "Modèle", name: "model", widget: "string"}
-      - {label: "État", name: "condition", widget: "string", hint: "Ex: - 3 ans, Neuf, Occasion", default: "Occasion"}
+      - {label: "Finition", name: "finition", widget: "string", required: false, hint: "Ex: RS Line, GT Line, Allure, etc."}
+      - label: "État"
+        name: "condition"
+        widget: "select"
+        multiple: true
+        options:
+          - {label: "Neuf", value: "neuf"}
+          - {label: "Occasion", value: "occasion"}
       - {label: "Kilométrage (km)", name: "mileage", widget: "number", value_type: "int", default: 0}
       - label: "Transmission"
         name: "transmission"
@@ -54,7 +61,6 @@ collections:
         widget: "select"
         options:
           - {label: "Export", value: "export"}
-          - {label: "Algérie", value: "algerie"}
           - {label: "Europe", value: "europe"}
       - {label: "Image principale", name: "image", widget: "image"}
       - label: "Galerie d'images"

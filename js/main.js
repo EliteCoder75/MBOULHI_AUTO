@@ -430,15 +430,10 @@ async function displayVehiclesOccasion() {
 
 // ===== VOIR LES DÉTAILS D'UN VÉHICULE =====
 async function viewVehicleDetails(vehicleId) {
-    console.log('Redirecting to detail page for vehicle ID:', vehicleId);
-
     // Find the vehicle data
     const vehicle = await getVehicleById(vehicleId);
 
-    if (!vehicle) {
-        console.error('Vehicle not found with ID:', vehicleId);
-        return;
-    }
+    if (!vehicle) return;
 
     // Store vehicle data in localStorage for the detail page
     localStorage.setItem('currentVehicle', JSON.stringify(vehicle));
@@ -483,8 +478,7 @@ function initContactForm() {
                 throw new Error('Erreur lors de l\'envoi');
             }
         })
-        .catch(error => {
-            console.error('Erreur:', error);
+        .catch(() => {
             alert('Une erreur est survenue. Veuillez réessayer ou nous contacter par WhatsApp.');
         });
     });

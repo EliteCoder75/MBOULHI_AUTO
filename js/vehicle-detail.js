@@ -112,10 +112,7 @@ async function loadVehicleDetail() {
     const urlParams = new URLSearchParams(window.location.search);
     const vehicleId = urlParams.get('id');
 
-    console.log('Loading vehicle detail for ID:', vehicleId);
-
     if (!vehicleId) {
-        console.log('No vehicle ID found, redirecting...');
         window.location.href = '/vehicules-occasion.html';
         return;
     }
@@ -125,18 +122,14 @@ async function loadVehicleDetail() {
         const vehicleData = localStorage.getItem('currentVehicle');
 
         if (!vehicleData) {
-            console.log('No vehicle data in localStorage, redirecting...');
             window.location.href = '/vehicules-occasion.html';
             return;
         }
 
         const vehicle = JSON.parse(vehicleData);
 
-        console.log('Found vehicle:', vehicle);
-
         // Verify the ID matches
         if (vehicle.id != vehicleId) {
-            console.log('Vehicle ID mismatch, redirecting...');
             window.location.href = '/vehicules-occasion.html';
             return;
         }
@@ -144,11 +137,13 @@ async function loadVehicleDetail() {
         // Display vehicle details
         displayVehicleDetail(vehicle);
 
+        // Load similar vehicles
+        loadSimilarVehicles(vehicle);
+
         // Clear localStorage after loading
         localStorage.removeItem('currentVehicle');
 
     } catch (error) {
-        console.error('Error loading vehicle:', error);
         alert('Erreur lors du chargement du véhicule. Redirection...');
         window.location.href = '/vehicules-occasion.html';
     }
@@ -201,6 +196,7 @@ function displayVehicleDetail(vehicle) {
     document.getElementById('descYear').textContent = vehicle.year || '-';
     document.getElementById('descBrand').textContent = vehicle.brand || '-';
     document.getElementById('descModel').textContent = vehicle.model || '-';
+    document.getElementById('descFinition').textContent = vehicle.finition || '-';
     document.getElementById('descCondition').textContent = vehicle.condition || '-';
     document.getElementById('descMileage').textContent =
         vehicle.mileage ? `${Number(vehicle.mileage).toLocaleString('fr-FR')} km` : '-';
@@ -229,4 +225,36 @@ function addThumbnail(imageSrc, index, isActive) {
     });
 
     thumbnailGallery.appendChild(thumbnail);
+}
+
+// ===== SIMILAR VEHICLES =====
+async function loadSimilarVehicles(currentVehicle) {
+    try {
+        const allVehicles = await getAllVehicles();
+
+        // Filter: same type (occasion/recent/neuf), exclude current vehicle
+        const similar = allVehicles.filter(v => {
+            if (v.id === currentVehicle.id) return false;
+            if (!v.types || !currentVehicle.types) return false;
+            return v.types.some(t => currentVehicle.types.includes(t));
+        });
+
+        if (similar.length === 0) return;
+
+        // Shuffle and take up to 4
+        const shuffled = similar.sort(() => Math.random() - 0.5);
+        const selected = shuffled.slice(0, 4);
+
+        const grid = document.getElementById('similarVehiclesGrid');
+        const section = document.getElementById('similarVehiclesSection');
+
+        selected.forEach(vehicle => {
+            const card = createVehicleCard(vehicle);
+            grid.appendChild(card);
+        });
+
+        section.style.display = '';
+    } catch (error) {
+        // Silently fail - similar vehicles is not critical
+    }
 }

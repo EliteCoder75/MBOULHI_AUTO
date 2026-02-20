@@ -12,8 +12,6 @@ const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
  */
 async function loadVehiclesFromAPI() {
     try {
-        console.log('📡 Chargement des véhicules depuis l\'API Netlify CMS...');
-
         const response = await fetch('/.netlify/functions/vehicles');
 
         if (!response.ok) {
@@ -23,16 +21,11 @@ async function loadVehiclesFromAPI() {
         const data = await response.json();
 
         if (data.success && data.vehicles) {
-            console.log(`✅ ${data.count} véhicules chargés depuis le CMS Netlify`);
             return data.vehicles;
         } else {
             throw new Error('Réponse API invalide');
         }
     } catch (error) {
-        console.error('❌ Erreur lors du chargement des véhicules:', error);
-        console.warn('💡 Pour tester en local, utilisez: netlify dev');
-        console.warn('💡 En production, l\'API fonctionne automatiquement sur Netlify');
-
         return [];
     }
 }
@@ -45,7 +38,6 @@ async function getAllVehicles(forceRefresh = false) {
 
     // Utiliser le cache si valide
     if (!forceRefresh && vehiclesCache && cacheTimestamp && (now - cacheTimestamp < CACHE_DURATION)) {
-        console.log('💾 Utilisation du cache');
         return vehiclesCache;
     }
 
@@ -130,7 +122,6 @@ async function getVehicleById(id) {
  * Rafraîchir le cache des véhicules
  */
 async function refreshVehiclesCache() {
-    console.log('�� Rafraîchissement du cache...');
     return await getAllVehicles(true);
 }
 
