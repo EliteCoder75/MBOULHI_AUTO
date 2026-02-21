@@ -170,7 +170,7 @@ function createVehicleCard(vehicle) {
             <div class="vehicle-price">${formatPrice(vehicle.price)}</div>
         </div>
         <div class="vehicle-info">
-            <h3 class="vehicle-title">${vehicle.brand} ${vehicle.model}</h3>
+            <h3 class="vehicle-title">${vehicle.brand.toUpperCase()} ${vehicle.model.toUpperCase()}${vehicle.finition ? ' ' + vehicle.finition : ''}</h3>
             <p class="vehicle-subtitle">${vehicle.year} • ${getDestinationLabel(vehicle.destination)}</p>
             <div class="vehicle-specs">
                 <div class="spec-item">

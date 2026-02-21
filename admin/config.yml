@@ -15,6 +15,7 @@ collections:
     folder: "_vehicules"
     create: true
     slug: "{{year}}-{{slug}}"
+    summary: "{{brand}} {{model}} {{year}} {{finition}}"
     fields:
       - {label: "ID", name: "id", widget: "number", value_type: "int"}
       - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2015, max: 2026}
