@@ -2,7 +2,7 @@
 id: 2
 year: 2026
 brand: dacia
-model: "duster "
+model: duster
 finition: journey
 condition:
   - neuf
