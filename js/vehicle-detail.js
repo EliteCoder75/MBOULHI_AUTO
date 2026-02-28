@@ -199,7 +199,8 @@ function displayVehicleDetail(vehicle) {
     document.getElementById('descFinition').textContent = vehicle.finition || '-';
     document.getElementById('descCondition').textContent = vehicle.condition || '-';
     document.getElementById('descMileage').textContent =
-        vehicle.mileage ? `${Number(vehicle.mileage).toLocaleString('fr-FR')} km` : '-';
+        (vehicle.mileage !== undefined && vehicle.mileage !== null && vehicle.mileage !== '')
+            ? `${Number(vehicle.mileage).toLocaleString('fr-FR')} km` : '-';
     document.getElementById('descTransmission').textContent = vehicle.transmission || '-';
     document.getElementById('descMotor').textContent = vehicle.motor || '-';
     document.getElementById('descFuel').textContent = vehicle.fuel || '-';
