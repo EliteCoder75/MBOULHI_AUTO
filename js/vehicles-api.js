@@ -127,6 +127,19 @@ async function refreshVehiclesCache() {
 
 // ===== FONCTIONS UTILITAIRES (compatibilité avec l'ancien code) =====
 
+/**
+ * Optimise une image via Netlify Image CDN (resize + WebP)
+ * @param {string} url - chemin de l'image (ex: "images/photo.jpg")
+ * @param {number} width - largeur cible en pixels
+ * @param {number} quality - qualité 1-100 (défaut: 75)
+ */
+function optimizeImage(url, width, quality = 75) {
+    if (!url) return url;
+    if (url.startsWith('/.netlify/images') || url.startsWith('data:') || url.startsWith('blob:')) return url;
+    const path = url.startsWith('/') ? url : '/' + url;
+    return `/.netlify/images?url=${encodeURIComponent(path)}&w=${width}&q=${quality}&fm=webp`;
+}
+
 function formatPrice(price) {
     return `${Number(price).toLocaleString('fr-FR')} €`;
 }

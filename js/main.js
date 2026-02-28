@@ -165,7 +165,7 @@ function createVehicleCard(vehicle) {
 
     card.innerHTML = `
         <div class="vehicle-image">
-            <img src="${vehicle.image}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
+            <img src="${optimizeImage(vehicle.image, 600)}" alt="${vehicle.brand} ${vehicle.model}" loading="lazy">
             <div class="vehicle-badge">${getVehicleTypeBadge(vehicle.types)}</div>
             <div class="vehicle-price">${formatPrice(vehicle.price)}</div>
         </div>

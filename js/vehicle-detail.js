@@ -169,7 +169,7 @@ function displayVehicleDetail(vehicle) {
 
     // Set main image
     const mainImage = document.getElementById('mainImage');
-    mainImage.src = vehicle.image;
+    mainImage.src = optimizeImage(vehicle.image, 1200, 80);
     mainImage.alt = title;
 
     // Set gallery
@@ -185,6 +185,9 @@ function displayVehicleDetail(vehicle) {
             addThumbnail(img.image || img, index + 1, false);
         });
     }
+
+    // Store original URLs for full-size click (before optimization)
+    mainImage._originalSrc = vehicle.image;
 
     // Set vehicle info
     document.getElementById('vehicleTitle').textContent = title.toUpperCase();
@@ -214,11 +217,11 @@ function addThumbnail(imageSrc, index, isActive) {
     const thumbnailGallery = document.getElementById('thumbnailGallery');
     const thumbnail = document.createElement('div');
     thumbnail.className = `thumbnail ${isActive ? 'active' : ''}`;
-    thumbnail.innerHTML = `<img src="${imageSrc}" alt="Image ${index + 1}">`;
+    thumbnail.innerHTML = `<img src="${optimizeImage(imageSrc, 120)}" alt="Image ${index + 1}">`;
 
     thumbnail.addEventListener('click', function() {
-        // Update main image
-        document.getElementById('mainImage').src = imageSrc;
+        // Update main image with optimized full-size version
+        document.getElementById('mainImage').src = optimizeImage(imageSrc, 1200, 80);
 
         // Update active thumbnail
         document.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
