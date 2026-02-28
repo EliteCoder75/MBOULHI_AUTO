@@ -6,6 +6,13 @@
 [build.environment]
   NODE_VERSION = "18"
 
+# Redirect apex domain to www
+[[redirects]]
+  from = "https://mboulhiauto.fr/*"
+  to = "https://www.mboulhiauto.fr/:splat"
+  status = 301
+  force = true
+
 # Security headers for all pages
 [[headers]]
   for = "/*"

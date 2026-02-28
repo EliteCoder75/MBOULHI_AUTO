@@ -17,7 +17,7 @@ collections:
     slug: "{{year}}-{{slug}}"
     summary: "{{brand}} {{model}} {{year}} {{finition}}"
     fields:
-      - {label: "ID", name: "id", widget: "number", value_type: "int"}
+      - {label: "ID", name: "id", widget: "string", hint: "Identifiant unique du véhicule (ex: 001, CAPTURE-001, V-2026-01)"}
       - {label: "Année", name: "year", widget: "number", value_type: "int", min: 2015, max: 2026}
       - {label: "Marque", name: "brand", widget: "string"}
       - {label: "Modèle", name: "model", widget: "string"}
@@ -69,8 +69,8 @@ collections:
         widget: "list"
         required: false
         field: {label: "Image", name: "image", widget: "image"}
-        max: 10
-        hint: "Ajoutez jusqu'à 10 images supplémentaires pour la galerie"
+        max: 20
+        hint: "Ajoutez jusqu'à 20 images supplémentaires pour la galerie"
       - {label: "Description", name: "desc", widget: "text", required: false}
 
   # Collection pour les paramètres du site
