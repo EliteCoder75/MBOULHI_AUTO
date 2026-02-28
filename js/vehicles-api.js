@@ -115,7 +115,7 @@ async function filterVehicles(filters) {
  */
 async function getVehicleById(id) {
     const vehicles = await getAllVehicles();
-    return vehicles.find(vehicle => vehicle.id === Number(id));
+    return vehicles.find(vehicle => String(vehicle.id) === String(id));
 }
 
 /**
