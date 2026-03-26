@@ -1,0 +1,44 @@
+name: Convert images to WebP
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "images/**"
+      - "_vehicules/**"
+
+jobs:
+  convert:
+    runs-on: ubuntu-latest
+    # Skip if this commit was made by the Action itself
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Pillow
+        run: pip install Pillow
+
+      - name: Convert images to WebP
+        run: python scripts/convert-to-webp.py
+
+      - name: Commit and push converted images
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add images/ _vehicules/
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "auto: convert images to webp [skip ci]"
+            git push
+          fi

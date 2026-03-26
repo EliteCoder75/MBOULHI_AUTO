@@ -29,7 +29,7 @@ collections:
         options:
           - {label: "Neuf", value: "neuf"}
           - {label: "Occasion", value: "occasion"}
-      - {label: "Kilométrage (km)", name: "mileage", widget: "number", value_type: "int", default: 0}
+      - {label: "Kilométrage (km)", name: "mileage", widget: "string", default: "0", pattern: ["^[0-9]*$", "Chiffres uniquement"]}
       - label: "Transmission"
         name: "transmission"
         widget: "select"
@@ -47,7 +47,7 @@ collections:
           - {label: "Hybride", value: "Hybride"}
       - {label: "Couleur extérieure", name: "exterior_color", widget: "string"}
       - {label: "Couleur intérieure", name: "interior_color", widget: "string"}
-      - {label: "Prix (€)", name: "price", widget: "number", value_type: "int"}
+      - {label: "Prix (€)", name: "price", widget: "string", pattern: ["^[0-9]*$", "Chiffres uniquement"]}
       - label: "Types"
         name: "types"
         widget: "select"
