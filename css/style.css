@@ -122,7 +122,31 @@ ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--spacing-md);
+}
+
+.nav-wrapper .logo {
+    flex: 1;
+}
+
+.nav-wrapper .nav-menu {
+    flex: 0 0 auto;
+}
+
+.nav-wrapper .nav-actions {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.logo {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.header.scrolled .logo {
+    opacity: 1;
+    pointer-events: auto;
 }
 
 .logo img {
@@ -243,7 +267,7 @@ ul {
     justify-content: center;
     background-image: url('../images/photo_de_couverture.png');
     background-size: cover;
-    background-position: left;
+    background-position: top left;
     background-attachment: fixed;
     overflow: hidden;
 }
@@ -255,7 +279,7 @@ ul {
     left: 0;
     right: 0;
     bottom: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.82) 0%, rgba(0, 0, 0, 0.65) 100%);
 }
 
 .hero-overlay {
@@ -274,6 +298,58 @@ ul {
     color: var(--text-white);
     padding: var(--spacing-md);
     margin-top: 80px;
+}
+
+/* Hero Logo Animation */
+@keyframes heroLogoAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+        filter: drop-shadow(0 0 0px rgba(220, 20, 60, 0));
+    }
+    60% {
+        opacity: 1;
+        transform: scale(1.08);
+        filter: drop-shadow(0 0 40px rgba(220, 20, 60, 0.7));
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+        filter: drop-shadow(0 0 20px rgba(220, 20, 60, 0.4));
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.hero-logo-animated {
+    margin-bottom: 1.5rem;
+    animation: heroLogoAppear 3s ease forwards;
+}
+
+.hero-logo-animated img {
+    height: 220px;
+    width: auto;
+    margin: 0 auto;
+}
+
+.hero-tagline {
+    font-size: 1.3rem;
+    margin-bottom: 2.5rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.8;
+    animation: fadeInUp 1s ease 2.5s both;
 }
 
 .hero-subtitle {
