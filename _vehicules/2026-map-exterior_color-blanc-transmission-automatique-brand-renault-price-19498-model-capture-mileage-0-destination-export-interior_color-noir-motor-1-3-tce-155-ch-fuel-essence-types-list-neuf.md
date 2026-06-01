@@ -8,10 +8,10 @@ condition:
   - neuf
 mileage: 0
 transmission: Automatique
-motor: 1.3 tce 155 ch
+motor: 1.3 TCe 155Ch
 fuel: Essence
-exterior_color: GRIS SHISTE
-interior_color: noir
+exterior_color: Gris Schiste
+interior_color: Noir
 price: 19395
 types:
   - neuf
