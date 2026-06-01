@@ -3,6 +3,7 @@ id: "1"
 year: 2024
 brand: Skoda
 model: Kamiq
+finition: Monte Carlo
 condition:
   - occasion
 mileage: "25000"
