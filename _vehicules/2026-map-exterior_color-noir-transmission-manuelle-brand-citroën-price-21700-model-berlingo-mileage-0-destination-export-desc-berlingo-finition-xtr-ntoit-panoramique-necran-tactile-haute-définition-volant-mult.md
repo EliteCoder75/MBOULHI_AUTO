@@ -28,7 +28,8 @@ gallery:
   - images/whatsapp-image-2026-06-02-at-11.42.02-2-.jpeg
   - images/whatsapp-image-2026-06-02-at-11.42.02-3-.jpeg
 desc: |-
-  Berlingo finition XTR
+  Berlingo finition XTR 5 places
+  Autre couleurs disponible : Gris / Blanc
   Toit Panoramique
   Ecran tactile haute définition, volant multifonction et aide a la conduite
   Grand coffre avec lunette arrière ouvrante + cache de coffre
