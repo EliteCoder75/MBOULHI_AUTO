@@ -15,14 +15,14 @@ price: "14800"
 types:
   - recent
 destination: export
-image: images/nissan.jpeg
+image: images/nissan.webp
 gallery:
-  - images/whatsapp-image-2026-06-02-at-16.23.13.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.23.14-4-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.23.14-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.23.14-3-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.23.14.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.23.14-1-.jpeg
+  - images/whatsapp-image-2026-06-02-at-16.23.13.webp
+  - images/whatsapp-image-2026-06-02-at-16.23.14-4-.webp
+  - images/whatsapp-image-2026-06-02-at-16.23.14-2-.webp
+  - images/whatsapp-image-2026-06-02-at-16.23.14-3-.webp
+  - images/whatsapp-image-2026-06-02-at-16.23.14.webp
+  - images/whatsapp-image-2026-06-02-at-16.23.14-1-.webp
 desc: |-
   Boite Manuelle 6 rapports
   Jantes alliages bi-ton

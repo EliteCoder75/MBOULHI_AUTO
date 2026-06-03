@@ -16,14 +16,14 @@ price: "15500"
 types:
   - recent
 destination: export
-image: images/taigo.png
+image: images/taigo.webp
 gallery:
-  - images/whatsapp-image-2026-06-02-at-16.21.01.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.21.03.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.21.04.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.21.01-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.21.04-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.21.04-1-.jpeg
+  - images/whatsapp-image-2026-06-02-at-16.21.01.webp
+  - images/whatsapp-image-2026-06-02-at-16.21.03.webp
+  - images/whatsapp-image-2026-06-02-at-16.21.04.webp
+  - images/whatsapp-image-2026-06-02-at-16.21.01-1-.webp
+  - images/whatsapp-image-2026-06-02-at-16.21.04-2-.webp
+  - images/whatsapp-image-2026-06-02-at-16.21.04-1-.webp
 desc: |
   Boite Manuelle 5 rapports
   Digital Cockpit

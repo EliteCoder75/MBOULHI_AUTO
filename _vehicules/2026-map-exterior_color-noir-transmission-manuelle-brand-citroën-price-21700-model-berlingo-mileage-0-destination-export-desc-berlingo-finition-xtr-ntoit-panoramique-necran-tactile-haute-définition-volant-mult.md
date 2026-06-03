@@ -16,17 +16,17 @@ price: "21700"
 types:
   - neuf
 destination: export
-image: images/noir-perla-nera.jpg
+image: images/noir-perla-nera.webp
 gallery:
-  - images/whatsapp-image-2026-06-02-at-11.42.01.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.01-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.01-3-.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.01-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.02-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.01-4-.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.02.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.02-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-11.42.02-3-.jpeg
+  - images/whatsapp-image-2026-06-02-at-11.42.01.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.01-1-.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.01-3-.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.01-2-.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.02-1-.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.01-4-.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.02.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.02-2-.webp
+  - images/whatsapp-image-2026-06-02-at-11.42.02-3-.webp
 desc: |-
   Berlingo finition XTR 5 places
   Autre couleurs disponible : Gris / Blanc

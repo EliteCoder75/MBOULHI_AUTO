@@ -18,11 +18,11 @@ types:
 destination: export
 image: images/téléchargement.png
 gallery:
-  - images/whatsapp-image-2026-06-01-at-18.55.53.jpeg
-  - images/whatsapp-image-2026-06-01-at-18.55.54.jpeg
-  - images/whatsapp-image-2026-06-01-at-18.55.53-1-.jpeg
-  - images/whatsapp-image-2026-06-01-at-18.55.54-2-.jpeg
-  - images/whatsapp-image-2026-06-01-at-18.55.54-3-.jpeg
+  - images/whatsapp-image-2026-06-01-at-18.55.53.webp
+  - images/whatsapp-image-2026-06-01-at-18.55.54.webp
+  - images/whatsapp-image-2026-06-01-at-18.55.53-1-.webp
+  - images/whatsapp-image-2026-06-01-at-18.55.54-2-.webp
+  - images/whatsapp-image-2026-06-01-at-18.55.54-3-.webp
 desc: >+
   4 Couleurs disponible ( Noir nacré, Gris schiste, Sandstone, Vert cèdre)
 

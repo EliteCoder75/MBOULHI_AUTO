@@ -16,12 +16,12 @@ price: "18700"
 types:
   - recent
 destination: export
-image: images/photo-kamiq-mc-5x5x-18-pouces.png
+image: images/photo-kamiq-mc-5x5x-18-pouces.webp
 gallery:
-  - images/whatsapp-image-2026-06-01-at-17.15.31.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.15.30-1-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.15.30.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.15.31-1-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.15.31-2-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.15.31-3-.jpeg
+  - images/whatsapp-image-2026-06-01-at-17.15.31.webp
+  - images/whatsapp-image-2026-06-01-at-17.15.30-1-.webp
+  - images/whatsapp-image-2026-06-01-at-17.15.30.webp
+  - images/whatsapp-image-2026-06-01-at-17.15.31-1-.webp
+  - images/whatsapp-image-2026-06-01-at-17.15.31-2-.webp
+  - images/whatsapp-image-2026-06-01-at-17.15.31-3-.webp
 ---

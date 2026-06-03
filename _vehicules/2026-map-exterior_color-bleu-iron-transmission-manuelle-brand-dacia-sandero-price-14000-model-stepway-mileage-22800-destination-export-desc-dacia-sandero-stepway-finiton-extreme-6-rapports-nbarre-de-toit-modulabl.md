@@ -16,13 +16,13 @@ price: "14000"
 types:
   - recent
 destination: export
-image: images/stepay.jpeg
+image: images/stepay.webp
 gallery:
-  - images/whatsapp-image-2026-06-02-at-16.19.49.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.19.50-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.19.50.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.19.50-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.20.25.jpeg
+  - images/whatsapp-image-2026-06-02-at-16.19.49.webp
+  - images/whatsapp-image-2026-06-02-at-16.19.50-1-.webp
+  - images/whatsapp-image-2026-06-02-at-16.19.50.webp
+  - images/whatsapp-image-2026-06-02-at-16.19.50-2-.webp
+  - images/whatsapp-image-2026-06-02-at-16.20.25.webp
 desc: |
   Dacia Sandero Stepway finiton Extreme 6 rapports
   Barre de toit modulable

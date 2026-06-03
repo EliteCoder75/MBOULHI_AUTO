@@ -16,13 +16,13 @@ price: "12300"
 types:
   - recent
 destination: export
-image: images/308-bleu-vertigo.jpg
+image: images/308-bleu-vertigo.webp
 gallery:
-  - images/whatsapp-image-2026-06-01-at-17.16.12-1-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.16.12-4-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.16.13.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.16.12-2-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.16.12.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.16.12-3-.jpeg
-  - images/whatsapp-image-2026-06-01-at-17.16.12-5-.jpeg
+  - images/whatsapp-image-2026-06-01-at-17.16.12-1-.webp
+  - images/whatsapp-image-2026-06-01-at-17.16.12-4-.webp
+  - images/whatsapp-image-2026-06-01-at-17.16.13.webp
+  - images/whatsapp-image-2026-06-01-at-17.16.12-2-.webp
+  - images/whatsapp-image-2026-06-01-at-17.16.12.webp
+  - images/whatsapp-image-2026-06-01-at-17.16.12-3-.webp
+  - images/whatsapp-image-2026-06-01-at-17.16.12-5-.webp
 ---
