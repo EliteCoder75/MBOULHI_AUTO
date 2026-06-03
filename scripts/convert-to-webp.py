@@ -48,12 +48,23 @@ def update_md_references(old_name: str, new_name: str) -> None:
         return
     for md_file in VEHICULES_DIR.glob("*.md"):
         text = md_file.read_text(encoding="utf-8")
-        # Match the bare filename anywhere in the YAML front matter value
         pattern = re.escape(old_name)
         if re.search(pattern, text):
             updated = re.sub(pattern, new_name, text)
             md_file.write_text(updated, encoding="utf-8")
             print(f"  [ref]  updated {md_file.name}: {old_name} → {new_name}")
+
+
+def update_html_css_references(old_name: str, new_name: str) -> None:
+    """Replace every occurrence of old_name with new_name in all HTML and CSS files."""
+    extensions = ["*.html", "*.css", "*.js"]
+    for pattern in extensions:
+        for f in Path(".").glob(pattern):
+            text = f.read_text(encoding="utf-8")
+            if old_name in text:
+                updated = text.replace(old_name, new_name)
+                f.write_text(updated, encoding="utf-8")
+                print(f"  [ref]  updated {f.name}: {old_name} → {new_name}")
 
 
 def main() -> None:
@@ -83,8 +94,9 @@ def main() -> None:
             skipped += 1
             continue
 
-        # Update .md references before deleting the original
+        # Update .md, HTML, and CSS references before deleting the original
         update_md_references(src.name, dest.name)
+        update_html_css_references(src.name, dest.name)
 
         # Delete original only when conversion succeeded and dest exists
         if dest.exists() and dest != src:

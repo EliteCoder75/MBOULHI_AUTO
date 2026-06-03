@@ -268,7 +268,7 @@ ul {
     background-image: url('../images/photo_de_couverture.png');
     background-size: cover;
     background-position: top left;
-    background-attachment: fixed;
+    background-attachment: scroll;
     overflow: hidden;
 }
 
@@ -339,6 +339,7 @@ ul {
     height: 220px;
     width: auto;
     margin: 0 auto;
+    mix-blend-mode: lighten;
 }
 
 .hero-tagline {
