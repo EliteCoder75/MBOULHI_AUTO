@@ -16,14 +16,14 @@ price: "12800"
 types:
   - neuf
 destination: export
-image: images/renault-taliant-beautyshot-desktop-01_ig_w1500_h903.jpg
+image: images/renault-taliant-beautyshot-desktop-01_ig_w1500_h903.webp
 gallery:
-  - images/whatsapp-image-2026-06-02-at-16.46.52.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.52-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.52-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.55-4-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.52-3-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.55-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.55-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.55.jpeg
+  - images/whatsapp-image-2026-06-02-at-16.46.52.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.52-1-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.52-2-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.55-4-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.52-3-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.55-1-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.55-2-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.55.webp
 ---
