@@ -16,13 +16,13 @@ price: "17200"
 types:
   - neuf
 destination: export
-image: images/téléchargement.png
+image: images/téléchargement.webp
 gallery:
-  - images/whatsapp-image-2026-06-02-at-16.46.51-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.50-1-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.51-2-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.51-3-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.51.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.51-5-.jpeg
-  - images/whatsapp-image-2026-06-02-at-16.46.51-4-.jpeg
+  - images/whatsapp-image-2026-06-02-at-16.46.51-1-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.50-1-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.51-2-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.51-3-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.51.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.51-5-.webp
+  - images/whatsapp-image-2026-06-02-at-16.46.51-4-.webp
 ---
