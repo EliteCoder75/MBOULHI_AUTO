@@ -6,7 +6,7 @@
 .page-header {
     position: relative;
     padding: 180px 0 60px;
-    background-image: url('../images/photo_de_couverture.png');
+    background-image: url('../images/photo_de_couverture.webp');
     background-size: cover;
     background-position: top center;
     background-attachment: fixed;
