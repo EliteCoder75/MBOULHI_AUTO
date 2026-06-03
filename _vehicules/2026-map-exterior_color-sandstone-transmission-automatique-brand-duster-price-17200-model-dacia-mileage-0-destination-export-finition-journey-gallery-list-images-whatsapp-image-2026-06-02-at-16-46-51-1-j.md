@@ -1,5 +1,5 @@
 ---
-id: "6"
+id: journeybeige
 year: 2026
 brand: Duster
 model: Dacia
