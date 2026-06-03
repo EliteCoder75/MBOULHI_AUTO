@@ -16,14 +16,14 @@ price: "18200"
 types:
   - neuf
 destination: export
-image: images/téléchargement.webp
+image: images/téléchargement.png
 gallery:
   - images/whatsapp-image-2026-06-01-at-18.55.53.webp
   - images/whatsapp-image-2026-06-01-at-18.55.54.webp
   - images/whatsapp-image-2026-06-01-at-18.55.53-1-.webp
   - images/whatsapp-image-2026-06-01-at-18.55.54-2-.webp
   - images/whatsapp-image-2026-06-01-at-18.55.54-3-.webp
-desc: >+
+desc: >
   4 Couleurs disponible ( Noir nacré, Gris schiste, Sandstone, Vert cèdre)
 
   4 Cylindre
