@@ -16,7 +16,7 @@ price: "18200"
 types:
   - neuf
 destination: export
-image: images/téléchargement.webp
+image: images/dadaidaz.png
 gallery:
   - images/whatsapp-image-2026-06-01-at-18.55.53.webp
   - images/whatsapp-image-2026-06-01-at-18.55.54.webp
