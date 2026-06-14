@@ -105,7 +105,6 @@ ul {
     left: 0;
     width: 100%;
     z-index: 1000;
-    box-shadow: var(--shadow-md);
     transition: var(--transition-normal);
 }
 
@@ -1554,6 +1553,17 @@ ul {
 
     .nav-toggle {
         display: flex;
+        order: -1;
+    }
+
+    .nav-wrapper .logo {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+    }
+
+    .nav-wrapper .logo img {
+        height: 70px;
     }
 
     .nav-menu {
@@ -1582,7 +1592,7 @@ ul {
     .hero {
         min-height: 100vh;
         height: auto;
-        background-image: url('../images/ab.png') !important;
+        background-image: url('../images/ab.webp') !important;
         background-attachment: scroll;
         background-position: center;
         background-size: cover;
