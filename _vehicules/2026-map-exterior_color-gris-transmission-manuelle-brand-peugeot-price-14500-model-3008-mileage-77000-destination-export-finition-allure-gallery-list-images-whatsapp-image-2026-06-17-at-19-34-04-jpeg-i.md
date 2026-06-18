@@ -16,7 +16,7 @@ price: "14500"
 types:
   - recent
 destination: export
-image: images/gemini_generated_image_g09lupg09lupg09l.png
+image: images/gemini_generated_image_g09lupg09lupg09l.webp
 gallery:
   - images/whatsapp-image-2026-06-17-at-19.34.04.jpeg
   - images/whatsapp-image-2026-06-17-at-19.34.04-1-.jpeg
