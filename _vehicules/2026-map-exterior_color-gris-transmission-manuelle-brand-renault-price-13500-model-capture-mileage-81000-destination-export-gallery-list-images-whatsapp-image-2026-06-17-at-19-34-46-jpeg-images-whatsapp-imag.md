@@ -17,11 +17,11 @@ types:
 destination: export
 image: images/renault_20capturphevetech1stsu2b_angularfront.webp
 gallery:
-  - images/whatsapp-image-2026-06-17-at-19.34.46.jpeg
-  - images/whatsapp-image-2026-06-17-at-19.34.46-1-.jpeg
-  - images/whatsapp-image-2026-06-17-at-19.34.46-2-.jpeg
-  - images/whatsapp-image-2026-06-17-at-19.34.47.jpeg
-  - images/whatsapp-image-2026-06-17-at-19.34.48.jpeg
-  - images/whatsapp-image-2026-06-17-at-19.34.50-1-.jpeg
-  - images/whatsapp-image-2026-06-17-at-19.34.50-2-.jpeg
+  - images/whatsapp-image-2026-06-17-at-19.34.46.webp
+  - images/whatsapp-image-2026-06-17-at-19.34.46-1-.webp
+  - images/whatsapp-image-2026-06-17-at-19.34.46-2-.webp
+  - images/whatsapp-image-2026-06-17-at-19.34.47.webp
+  - images/whatsapp-image-2026-06-17-at-19.34.48.webp
+  - images/whatsapp-image-2026-06-17-at-19.34.50-1-.webp
+  - images/whatsapp-image-2026-06-17-at-19.34.50-2-.webp
 ---
