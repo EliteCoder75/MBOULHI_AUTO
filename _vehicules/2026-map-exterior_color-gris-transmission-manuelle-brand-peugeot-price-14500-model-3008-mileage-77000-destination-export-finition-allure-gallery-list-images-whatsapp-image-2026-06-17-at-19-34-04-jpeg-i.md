@@ -3,7 +3,7 @@ id: 3008_gris
 year: 2023
 brand: Peugeot
 model: "3008"
-finition: Allure
+finition: ""
 condition:
   - occasion
 mileage: "77000"
