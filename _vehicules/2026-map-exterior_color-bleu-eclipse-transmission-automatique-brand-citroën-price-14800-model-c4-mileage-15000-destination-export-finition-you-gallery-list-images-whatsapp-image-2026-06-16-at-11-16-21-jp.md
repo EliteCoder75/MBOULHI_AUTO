@@ -16,7 +16,7 @@ price: "14800"
 types:
   - recent
 destination: export
-image: images/citroen-c4-bleu-eclipse-nuit-marine-fonce.jpg
+image: images/citroen-c4-bleu-eclipse-nuit-marine-fonce.webp
 gallery:
   - images/whatsapp-image-2026-06-16-at-11.16.21.webp
   - images/whatsapp-image-2026-06-16-at-11.16.21-1-.webp
