@@ -16,7 +16,7 @@ price: "18200"
 types:
   - neuf
 destination: export
-image: images/téléchargement.png
+image: images/téléchargement.webp
 gallery:
   - images/whatsapp-image-2026-07-10-at-16.10.43.jpeg
   - images/whatsapp-image-2026-07-10-at-16.10.43-1-.jpeg
