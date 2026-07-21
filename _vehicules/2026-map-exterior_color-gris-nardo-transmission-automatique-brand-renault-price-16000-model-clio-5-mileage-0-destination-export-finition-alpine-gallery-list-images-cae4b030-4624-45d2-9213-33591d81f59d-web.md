@@ -12,7 +12,7 @@ motor: 1.0 TCe 90Ch
 fuel: Essence
 exterior_color: Gris Nardo
 interior_color: Noir
-price: "16000"
+price: "15900"
 types:
   - neuf
 destination: export
