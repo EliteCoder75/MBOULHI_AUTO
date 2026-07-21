@@ -8,11 +8,11 @@ condition:
   - neuf
 mileage: "0"
 transmission: Manuelle
-motor: 1.0 TCe 90Ch
+motor: 1.5 DCi 115Ch
 fuel: Diesel
 exterior_color: Noir
 interior_color: Noir
-price: "16000"
+price: "15900"
 types:
   - neuf
 destination: export
