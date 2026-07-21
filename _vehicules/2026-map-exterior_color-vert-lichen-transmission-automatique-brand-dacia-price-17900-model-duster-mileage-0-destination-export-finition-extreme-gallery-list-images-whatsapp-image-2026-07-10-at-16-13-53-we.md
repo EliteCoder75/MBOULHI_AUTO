@@ -16,7 +16,7 @@ price: "17900"
 types:
   - neuf
 destination: export
-image: images/téléchargement.webp
+image: images/herjk.png
 gallery:
   - images/whatsapp-image-2026-07-10-at-16.13.53.webp
   - images/whatsapp-image-2026-07-10-at-16.13.53-2-.webp
