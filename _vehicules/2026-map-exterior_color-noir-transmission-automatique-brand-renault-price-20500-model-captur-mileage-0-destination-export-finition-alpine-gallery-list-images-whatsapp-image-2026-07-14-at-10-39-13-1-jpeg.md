@@ -16,14 +16,14 @@ price: "20500"
 types:
   - neuf
 destination: export
-image: images/image.jpg
+image: images/image.webp
 gallery:
-  - images/whatsapp-image-2026-07-14-at-10.39.13-1-.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.13.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.13-2-.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.13-3-.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.14.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.14-2-.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.14-1-.jpeg
-  - images/whatsapp-image-2026-07-14-at-10.39.14-4-.jpeg
+  - images/whatsapp-image-2026-07-14-at-10.39.13-1-.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.13.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.13-2-.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.13-3-.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.14.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.14-2-.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.14-1-.webp
+  - images/whatsapp-image-2026-07-14-at-10.39.14-4-.webp
 ---
