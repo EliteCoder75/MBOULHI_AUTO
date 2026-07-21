@@ -1,6 +1,6 @@
 ---
 id: citroen_c4_bleunuit
-year: 2026
+year: 2025
 brand: Citroen
 model: C4
 finition: Max
