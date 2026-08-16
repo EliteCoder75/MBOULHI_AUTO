@@ -5,7 +5,7 @@
 
 let vehiclesCache = null;
 let cacheTimestamp = null;
-const CACHE_DURATION = 5 * 60 * 1000; // 5 minutes
+const CACHE_DURATION = 60 * 1000; // 1 minute
 
 /**
  * Charger les véhicules depuis l'API Netlify

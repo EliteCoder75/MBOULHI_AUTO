@@ -1,205 +1,131 @@
 /**
- * Netlify Function - API pour charger les véhicules depuis le CMS
+ * MBOULHI AUTO — Netlify Function
  * Endpoint: /.netlify/functions/vehicles
  *
- * Note: Le dossier _vehicules doit être inclus dans le bundle de cette fonction
+ * Lit les véhicules EN DIRECT depuis GitHub (_vehicules/) au lieu d'une
+ * copie figée au build — un ajout/edit/suppression de véhicule dans la CMS
+ * n'a donc plus besoin de redéploiement Netlify pour être pris en compte.
+ *
+ * Les photos restent servies par le CDN Images de Netlify (/.netlify/images,
+ * utilisé par optimizeImage() côté front pour le redimensionnement à la
+ * volée) — un déploiement reste donc nécessaire quand une photo change.
+ * Seuls les changements texte (prix, dispo, description, suppression...)
+ * évitent le déploiement.
  */
 
-const fs = require('fs');
-const path = require('path');
+const matter = require('gray-matter');
 
-/**
- * Parse le front matter YAML d'un fichier markdown
- */
-function parseFrontMatter(content) {
-    const frontMatterRegex = /^---\n([\s\S]*?)\n---/;
-    const match = content.match(frontMatterRegex);
+const OWNER  = 'EliteCoder75';
+const REPO   = 'MBOULHI_AUTO';
+const BRANCH = 'master';
+const TOKEN  = process.env.GITHUB_TOKEN;
 
-    if (!match) return null;
+const CACHE_TTL_MS = 60 * 1000;
+let cache = { data: null, ts: 0 };
 
-    const frontMatter = match[1];
-    const data = {};
+const HEADERS = {
+    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Content-Type': 'application/json'
+};
 
-    let currentKey = null;
-    let currentList = [];
-    let isInList = false;
-
-    frontMatter.split('\n').forEach(line => {
-        // Liste item (commence par "  - ")
-        if (line.startsWith('  - ')) {
-            if (isInList) {
-                const value = line.substring(4).trim();
-                currentList.push(value);
-            }
-        }
-        // Key: value
-        else if (line.includes(':')) {
-            // Sauvegarder la liste précédente si on en avait une
-            if (isInList && currentKey) {
-                data[currentKey] = currentList;
-                currentList = [];
-                isInList = false;
-            }
-
-            const colonIndex = line.indexOf(':');
-            const key = line.substring(0, colonIndex).trim();
-            const value = line.substring(colonIndex + 1).trim();
-
-            currentKey = key;
-
-            if (value === '') {
-                // C'est probablement le début d'une liste
-                isInList = true;
-                currentList = [];
-            } else {
-                // Convertir les types
-                if (!isNaN(value) && value !== '') {
-                    data[key] = Number(value);
-                } else if (value === 'true') {
-                    data[key] = true;
-                } else if (value === 'false') {
-                    data[key] = false;
-                } else {
-                    data[key] = value;
-                }
-            }
-        }
-    });
-
-    // Sauvegarder la dernière liste si on était dans une liste
-    if (isInList && currentKey) {
-        data[currentKey] = currentList;
-    }
-
-    return data;
-}
-
-/**
- * Normaliser les données d'un véhicule
- */
 function normalizeVehicle(data) {
     return {
-        id: data.id || 0,
-        brand: (data.brand || '').toUpperCase(),
-        model: data.model || '',
-        finition: data.finition || '',
-        year: data.year || new Date().getFullYear(),
-        price: parseInt(String(data.price || '0').replace(/\D/g, ''), 10) || 0,
-        mileage: parseInt(String(data.mileage !== undefined ? data.mileage : '0').replace(/\D/g, ''), 10) || 0,
-        fuel: data.fuel || '',
-        transmission: data.transmission || '',
-        motor: data.motor || data.power || '',
+        id:             data.id || 0,
+        brand:          (data.brand || '').toUpperCase(),
+        model:          data.model || '',
+        finition:       data.finition || '',
+        year:           data.year || new Date().getFullYear(),
+        price:          parseInt(String(data.price || '0').replace(/\D/g, ''), 10) || 0,
+        mileage:        parseInt(String(data.mileage !== undefined ? data.mileage : '0').replace(/\D/g, ''), 10) || 0,
+        fuel:           data.fuel || '',
+        transmission:   data.transmission || '',
+        motor:          data.motor || data.power || '',
         exterior_color: data.exterior_color || '',
         interior_color: data.interior_color || '',
-        condition: data.condition || '',
-        types: Array.isArray(data.types) ? data.types : [],
-        destination: data.destination || '',
-        image: data.image || '',
-        gallery: Array.isArray(data.gallery) ? data.gallery : [],
-        description: data.description || data.desc || '',
-        features: Array.isArray(data.features) ? data.features : []
+        condition:      data.condition || '',
+        types:          Array.isArray(data.types) ? data.types : [],
+        destination:    data.destination || '',
+        image:          data.image || '',
+        gallery:        Array.isArray(data.gallery) ? data.gallery : [],
+        description:    data.description || data.desc || '',
+        features:       Array.isArray(data.features) ? data.features : []
     };
 }
 
-/**
- * Handler principal de la fonction
- */
-exports.handler = async (event, context) => {
-    try {
-        // Autoriser CORS
-        const headers = {
-            'Access-Control-Allow-Origin': '*',
-            'Access-Control-Allow-Headers': 'Content-Type',
-            'Content-Type': 'application/json'
-        };
-
-        // Gérer les requêtes OPTIONS (preflight)
-        if (event.httpMethod === 'OPTIONS') {
-            return {
-                statusCode: 200,
-                headers,
-                body: ''
-            };
-        }
-
-        // Le dossier _vehicules est maintenant dans le même dossier que cette fonction
-        const vehiclesDir = path.join(__dirname, '_vehicules');
-
-        console.log('📂 Chemin recherché:', vehiclesDir);
-
-        // Vérifier que le dossier existe
-        if (!fs.existsSync(vehiclesDir)) {
-            console.error('❌ Dossier _vehicules introuvable');
-            console.error('__dirname:', __dirname);
-            console.error('Contenu du dossier:', fs.readdirSync(__dirname));
-
-            return {
-                statusCode: 404,
-                headers,
-                body: JSON.stringify({
-                    error: 'Dossier _vehicules introuvable',
-                    __dirname: __dirname,
-                    content: fs.readdirSync(__dirname)
-                })
-            };
-        }
-
-        // Lire tous les fichiers .md
-        const files = fs.readdirSync(vehiclesDir)
-            .filter(file => file.endsWith('.md'));
-
-        console.log(`📂 ${files.length} fichiers markdown trouvés`);
-
-        const vehicles = [];
-
-        // Parser chaque fichier
-        for (const file of files) {
-            try {
-                const filePath = path.join(vehiclesDir, file);
-                const content = fs.readFileSync(filePath, 'utf8');
-                const data = parseFrontMatter(content);
-
-                if (data) {
-                    const vehicle = normalizeVehicle(data);
-                    vehicles.push(vehicle);
-                    console.log(`✅ ${vehicle.brand} ${vehicle.model} (ID: ${vehicle.id})`);
-                } else {
-                    console.log(`⚠️ Impossible de parser: ${file}`);
-                }
-            } catch (error) {
-                console.error(`❌ Erreur lecture fichier ${file}:`, error.message);
+async function fetchVehiclesFromGitHub() {
+    const listRes = await fetch(
+        `https://api.github.com/repos/${OWNER}/${REPO}/contents/_vehicules?ref=${BRANCH}`,
+        {
+            headers: {
+                'Accept': 'application/vnd.github+json',
+                'User-Agent': 'mboulhi-auto-vehicles-function',
+                ...(TOKEN ? { 'Authorization': `Bearer ${TOKEN}` } : {})
             }
         }
+    );
+    if (!listRes.ok) {
+        throw new Error(`GitHub API listing _vehicules a échoué: ${listRes.status}`);
+    }
+    const entries = await listRes.json();
+    const mdFiles = entries.filter(e => e.type === 'file' && e.name.endsWith('.md'));
 
-        // Trier par ID
-        vehicles.sort((a, b) => a.id - b.id);
+    const vehicles = await Promise.all(mdFiles.map(async (entry) => {
+        const raw = await fetch(entry.download_url, {
+            headers: TOKEN ? { 'Authorization': `Bearer ${TOKEN}` } : {}
+        });
+        if (!raw.ok) {
+            console.error(`Erreur lecture ${entry.name}: HTTP ${raw.status}`);
+            return null;
+        }
+        const content = await raw.text();
+        try {
+            const { data } = matter(content);
+            return (data && data.id) ? normalizeVehicle(data) : null;
+        } catch (e) {
+            console.error(`Erreur parsing ${entry.name}:`, e.message);
+            return null;
+        }
+    }));
 
-        console.log(`✨ ${vehicles.length} véhicules chargés avec succès`);
+    return vehicles.filter(Boolean);
+}
 
-        // Retourner les véhicules
+async function getVehicles() {
+    const now = Date.now();
+    if (cache.data && (now - cache.ts) < CACHE_TTL_MS) {
+        return cache.data;
+    }
+    try {
+        const data = await fetchVehiclesFromGitHub();
+        cache = { data, ts: now };
+        return data;
+    } catch (e) {
+        console.error('Erreur fetch GitHub, fallback sur le cache existant:', e.message);
+        if (cache.data) return cache.data;
+        return [];
+    }
+}
+
+exports.handler = async (event) => {
+    if (event.httpMethod === 'OPTIONS') {
+        return { statusCode: 200, headers: HEADERS, body: '' };
+    }
+
+    try {
+        const vehicles = [...(await getVehicles())].sort((a, b) => String(a.id).localeCompare(String(b.id)));
+
         return {
             statusCode: 200,
-            headers,
-            body: JSON.stringify({
-                success: true,
-                count: vehicles.length,
-                vehicles: vehicles
-            })
+            headers: HEADERS,
+            body: JSON.stringify({ success: true, count: vehicles.length, vehicles })
         };
 
-    } catch (error) {
-        console.error('❌ Erreur serveur:', error);
-
+    } catch (err) {
         return {
             statusCode: 500,
-            headers: {
-                'Content-Type': 'application/json',
-                'Access-Control-Allow-Origin': '*'
-            },
-            body: JSON.stringify({
-                success: false,
-                error: error.message
-            })
+            headers: HEADERS,
+            body: JSON.stringify({ success: false, error: err.message })
         };
     }
 };
