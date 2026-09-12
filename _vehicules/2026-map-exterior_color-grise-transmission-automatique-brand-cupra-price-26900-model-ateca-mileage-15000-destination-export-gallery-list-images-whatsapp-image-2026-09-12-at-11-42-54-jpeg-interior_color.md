@@ -15,7 +15,7 @@ price: "26900"
 types:
   - recent
 destination: export
-image: images/new-cupra-ateca-graphite-grey-car.jpeg
+image: images/new-cupra-ateca-graphite-grey-car.webp
 gallery:
   - images/whatsapp-image-2026-09-12-at-11.42.54.jpeg
 ---
