@@ -15,16 +15,16 @@ price: "26900"
 types:
   - recent
 destination: export
-image: images/new-cupra-ateca-graphite-grey-car.jpeg
+image: images/new-cupra-ateca-graphite-grey-car.webp
 gallery:
-  - images/whatsapp-image-2026-09-12-at-11.42.54.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.53-1-.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.54-1-.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.53.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.54-2-.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.55-3-.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.55-2-.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.55-1-.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.55.jpeg
-  - images/whatsapp-image-2026-09-12-at-11.42.55-5-.jpeg
+  - images/whatsapp-image-2026-09-12-at-11.42.54.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.53-1-.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.54-1-.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.53.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.54-2-.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.55-3-.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.55-2-.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.55-1-.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.55.webp
+  - images/whatsapp-image-2026-09-12-at-11.42.55-5-.webp
 ---
