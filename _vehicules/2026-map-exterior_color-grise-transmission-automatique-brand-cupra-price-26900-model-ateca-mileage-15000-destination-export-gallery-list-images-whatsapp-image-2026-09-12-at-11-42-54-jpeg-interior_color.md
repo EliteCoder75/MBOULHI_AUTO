@@ -17,5 +17,5 @@ types:
 destination: export
 image: images/new-cupra-ateca-graphite-grey-car.webp
 gallery:
-  - images/whatsapp-image-2026-09-12-at-11.42.54.jpeg
+  - images/2020-opel-mokka-x-rendering.webp
 ---
