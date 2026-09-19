@@ -16,14 +16,14 @@ price: "13400"
 types:
   - recent
 destination: export
-image: images/gemini_generated_image_n8vwzon8vwzon8vw.jpg
+image: images/gemini_generated_image_n8vwzon8vwzon8vw.webp
 gallery:
-  - images/whatsapp-image-2026-09-19-at-12.25.06.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07-1-.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07-2-.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07-3-.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07-4-.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07-5-.jpeg
-  - images/whatsapp-image-2026-09-19-at-12.25.07-6-.jpeg
+  - images/whatsapp-image-2026-09-19-at-12.25.06.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07-1-.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07-2-.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07-3-.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07-4-.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07-5-.webp
+  - images/whatsapp-image-2026-09-19-at-12.25.07-6-.webp
 ---
