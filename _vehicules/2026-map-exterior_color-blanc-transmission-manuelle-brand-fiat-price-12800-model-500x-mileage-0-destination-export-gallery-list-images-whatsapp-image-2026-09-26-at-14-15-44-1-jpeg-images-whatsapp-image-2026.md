@@ -15,16 +15,16 @@ price: "12800"
 types:
   - neuf
 destination: export
-image: images/fiat500x.png
+image: images/fiat500x.webp
 gallery:
-  - images/whatsapp-image-2026-09-26-at-14.15.44-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.44-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.44.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.46.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.47.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.48-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.48-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.48.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.49.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.46-1-.jpeg
+  - images/whatsapp-image-2026-09-26-at-14.15.44-1-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.44-2-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.44.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.46.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.47.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.48-1-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.48-2-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.48.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.49.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.46-1-.webp
 ---
