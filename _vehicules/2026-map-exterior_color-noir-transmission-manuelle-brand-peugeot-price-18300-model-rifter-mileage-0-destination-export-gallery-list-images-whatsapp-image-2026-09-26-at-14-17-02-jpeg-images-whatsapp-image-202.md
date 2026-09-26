@@ -17,11 +17,11 @@ types:
 destination: export
 image: images/9589-125131-20260616111251_g-1-800x450.webp
 gallery:
-  - images/whatsapp-image-2026-09-26-at-14.17.02.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.17.02-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.17.07-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.17.03.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.17.02-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.17.06.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.17.07.jpeg
+  - images/whatsapp-image-2026-09-26-at-14.17.02.webp
+  - images/whatsapp-image-2026-09-26-at-14.17.02-1-.webp
+  - images/whatsapp-image-2026-09-26-at-14.17.07-1-.webp
+  - images/whatsapp-image-2026-09-26-at-14.17.03.webp
+  - images/whatsapp-image-2026-09-26-at-14.17.02-2-.webp
+  - images/whatsapp-image-2026-09-26-at-14.17.06.webp
+  - images/whatsapp-image-2026-09-26-at-14.17.07.webp
 ---
