@@ -15,7 +15,7 @@ price: "54000"
 types:
   - neuf
 destination: export
-image: images/capture-d-écran-2026-09-26-175204.webp
+image: images/gemini_generated_image_c4o89c4o89c4o89c.jpg
 gallery:
   - images/whatsapp-image-2026-09-26-at-14.14.44-6-.webp
   - images/whatsapp-image-2026-09-26-at-14.14.44-3-.webp
