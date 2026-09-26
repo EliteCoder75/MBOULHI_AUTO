@@ -15,15 +15,15 @@ price: "11300"
 types:
   - neuf
 destination: export
-image: images/gemini_generated_image_9j5zob9j5zob9j5z.jpg
+image: images/gemini_generated_image_9j5zob9j5zob9j5z.webp
 gallery:
-  - images/whatsapp-image-2026-09-26-at-18.22.14.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.14-3-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.14-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.14-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.14-5-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.14-4-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.15-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.15-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-18.22.15.jpeg
+  - images/whatsapp-image-2026-09-26-at-18.22.14.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.14-3-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.14-2-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.14-1-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.14-5-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.14-4-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.15-1-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.15-2-.webp
+  - images/whatsapp-image-2026-09-26-at-18.22.15.webp
 ---
