@@ -5,7 +5,7 @@ brand: PEUGEOT
 model: "308"
 condition:
   - neuf
-mileage: "0"
+mileage: "69000"
 transmission: Manuelle
 motor: 1.2 PureTech 130Ch
 fuel: Essence
