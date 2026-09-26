@@ -15,7 +15,7 @@ price: "54000"
 types:
   - neuf
 destination: export
-image: images/cc_2026bms202018440_01_640_300.png
+image: images/cc_2026bms202018440_01_640_300.webp
 gallery:
   - images/whatsapp-image-2026-09-26-at-14.14.44-6-.webp
   - images/whatsapp-image-2026-09-26-at-14.14.44-3-.webp
