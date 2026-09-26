@@ -15,13 +15,13 @@ price: "12000"
 types:
   - recent
 destination: export
-image: images/308_style_nv.png
+image: images/308_style_nv.webp
 gallery:
-  - images/whatsapp-image-2026-09-26-at-14.15.09-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.09-3-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.06-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.09-1-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.06-2-.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.08.jpeg
-  - images/whatsapp-image-2026-09-26-at-14.15.09.jpeg
+  - images/whatsapp-image-2026-09-26-at-14.15.09-2-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.09-3-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.06-1-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.09-1-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.06-2-.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.08.webp
+  - images/whatsapp-image-2026-09-26-at-14.15.09.webp
 ---
