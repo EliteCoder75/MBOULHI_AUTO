@@ -21,9 +21,9 @@ gallery:
   - images/whatsapp-image-2026-09-12-at-11.40.53.webp
   - images/whatsapp-image-2026-09-12-at-11.40.53-1-.webp
   - images/whatsapp-image-2026-09-12-at-11.40.53-3-.webp
-  - images/whatsapp-image-2026-10-06-at-12.35.57-1-.jpeg
-  - images/whatsapp-image-2026-10-06-at-12.35.57-3-.jpeg
-  - images/whatsapp-image-2026-10-06-at-12.35.57.jpeg
+  - images/whatsapp-image-2026-10-06-at-12.35.57-1-.webp
+  - images/whatsapp-image-2026-10-06-at-12.35.57-3-.webp
+  - images/whatsapp-image-2026-10-06-at-12.35.57.webp
   - images/whatsapp-image-2026-09-12-at-11.40.54-4-.webp
   - images/whatsapp-image-2026-09-12-at-11.40.54-2-.webp
   - images/whatsapp-image-2026-09-12-at-11.40.54-1-.webp
