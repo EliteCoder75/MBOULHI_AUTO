@@ -16,7 +16,7 @@ price: "34500"
 types:
   - neuf
 destination: export
-image: images/photo.webp
+image: images/4cdc97cd-3a6b-43fb-8d9d-6ee081832e24_2026-vw-t-roc-r-line-150.jpeg
 gallery:
   - images/whatsapp-image-2026-10-17-at-11.16.43.webp
   - images/whatsapp-image-2026-10-17-at-11.16.44.webp
