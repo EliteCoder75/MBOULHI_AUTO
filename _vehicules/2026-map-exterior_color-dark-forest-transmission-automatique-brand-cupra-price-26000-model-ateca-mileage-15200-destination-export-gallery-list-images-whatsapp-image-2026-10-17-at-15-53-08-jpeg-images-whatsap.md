@@ -15,18 +15,18 @@ price: "26000"
 types:
   - recent
 destination: export
-image: images/gemini_generated_image_dzwns5dzwns5dzwn.jpg
+image: images/gemini_generated_image_dzwns5dzwns5dzwn.webp
 gallery:
-  - images/whatsapp-image-2026-10-17-at-15.53.08.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.07.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.07-2-.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.09.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.10-1-.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.10-2-.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.10-3-.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.11-1-.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.10.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.07-1-.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.11.jpeg
-  - images/whatsapp-image-2026-10-17-at-15.53.10-4-.jpeg
+  - images/whatsapp-image-2026-10-17-at-15.53.08.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.07.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.07-2-.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.09.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.10-1-.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.10-2-.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.10-3-.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.11-1-.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.10.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.07-1-.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.11.webp
+  - images/whatsapp-image-2026-10-17-at-15.53.10-4-.webp
 ---
