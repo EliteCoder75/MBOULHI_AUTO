@@ -16,7 +16,7 @@ price: "17900"
 types:
   - recent
 destination: export
-image: images/gemini_generated_image_e7hczme7hczme7hc.webp
+image: images/65ac527acf24d57cca0c1328_golf-1-min-modifié.webp
 gallery:
   - images/whatsapp-image-2026-09-12-at-11.40.53.webp
   - images/whatsapp-image-2026-09-12-at-11.40.53-1-.webp
