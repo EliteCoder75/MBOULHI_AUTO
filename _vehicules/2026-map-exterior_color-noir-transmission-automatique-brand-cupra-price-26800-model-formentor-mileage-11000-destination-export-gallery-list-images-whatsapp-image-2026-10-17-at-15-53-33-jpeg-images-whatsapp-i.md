@@ -15,7 +15,7 @@ price: "26800"
 types:
   - occasion
 destination: export
-image: images/formenor-midnight-detou.webp
+image: images/formenor-midnight-detou.png
 gallery:
   - images/whatsapp-image-2026-10-17-at-15.53.33.webp
   - images/whatsapp-image-2026-10-17-at-15.53.33-4-.webp
