@@ -15,7 +15,7 @@ price: "13700"
 types:
   - recent
 destination: export
-image: images/capture-d-écran-2026-10-24-131258.png
+image: images/capture-d-écran-2026-10-24-131258.webp
 gallery:
   - images/c8f4400d-1b91-4faf-b2c4-8257627ade26.webp
   - images/d789290e-b2f7-4d79-9d02-9fc85c987473.webp
