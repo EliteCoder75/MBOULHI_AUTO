@@ -15,7 +15,7 @@ price: "15200"
 types:
   - recent
 destination: export
-image: images/taigo_r-line.png
+image: images/taigo_r-line.webp
 gallery:
   - images/bdda2283-070b-4e34-99fc-fb1d7dce84b3.webp
   - images/8b3189ec-a0aa-4e45-80f2-882ce634ffe0.webp
