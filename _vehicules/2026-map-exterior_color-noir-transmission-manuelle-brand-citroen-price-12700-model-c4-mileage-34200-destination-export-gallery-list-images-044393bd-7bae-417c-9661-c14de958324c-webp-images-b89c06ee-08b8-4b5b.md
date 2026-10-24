@@ -15,7 +15,7 @@ price: "12700"
 types:
   - recent
 destination: export
-image: images/c4-shine-pack-1.jpeg
+image: images/c4-shine-pack-1.webp
 gallery:
   - images/044393bd-7bae-417c-9661-c14de958324c.webp
   - images/b89c06ee-08b8-4b5b-82c7-c28414aae291.webp
