@@ -15,17 +15,17 @@ price: "24000"
 types:
   - neuf
 destination: export
-image: images/gemini_generated_image_rdey74rdey74rdey.jpg
+image: images/gemini_generated_image_rdey74rdey74rdey.webp
 gallery:
-  - images/whatsapp-image-2026-11-06-at-17.37.22-3-.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.22-2-.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.21.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.22-4-.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.22.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.22-6-.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.22-7-.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.22-5-.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.30.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.23.jpeg
-  - images/whatsapp-image-2026-11-06-at-17.37.30-1-.jpeg
+  - images/whatsapp-image-2026-11-06-at-17.37.22-3-.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.22-2-.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.21.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.22-4-.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.22.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.22-6-.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.22-7-.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.22-5-.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.30.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.23.webp
+  - images/whatsapp-image-2026-11-06-at-17.37.30-1-.webp
 ---
