@@ -15,7 +15,7 @@ price: "12600"
 types:
   - recent
 destination: export
-image: images/1730991135-0.jpg
+image: images/1730991135-0.webp
 gallery:
   - images/2568fa33-9403-41fe-baba-e65c33fbf96a.webp
   - images/aa.webp
