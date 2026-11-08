@@ -12,7 +12,7 @@ motor: 1.3 TCe 160Ch
 fuel: Essence
 exterior_color: Gris Schist
 interior_color: Noir
-price: "20500"
+price: "19900"
 types:
   - neuf
 destination: export
