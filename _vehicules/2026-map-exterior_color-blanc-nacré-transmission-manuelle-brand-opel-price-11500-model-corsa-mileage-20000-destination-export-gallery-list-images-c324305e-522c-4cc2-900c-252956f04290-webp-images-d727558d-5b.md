@@ -15,7 +15,7 @@ price: "11500"
 types:
   - occasion
 destination: export
-image: images/66aa523e02d1e.png
+image: images/66aa523e02d1e.webp
 gallery:
   - images/c324305e-522c-4cc2-900c-252956f04290.webp
   - images/d727558d-5bf9-4bc4-8e27-c05165136c41.webp
