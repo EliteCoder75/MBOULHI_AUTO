@@ -16,7 +16,7 @@ price: "35300"
 types:
   - neuf
 destination: export
-image: images/gemini_generated_image_mpqfpimpqfpimpqf.jpg
+image: images/gemini_generated_image_mpqfpimpqfpimpqf.webp
 gallery:
   - images/8d80fa11-632c-4276-b238-d8c7f12945e1.webp
   - images/38ba8145-d5d1-40b9-ae56-fbe393f997c5.webp
